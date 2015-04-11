@@ -56,23 +56,19 @@
             var color=d3.scale.category10();
               d3.csv("countries.csv",function(data){
                 
-                for(var i=0 ; i<7;i++){
-                  labels[i]=new array;
+                
+               for(var i=0 ; i<data.length;i++){
+                  labels[i]=data[i].Month;
                 }
-               for(var i=0 ; i<7;i++){
-                 for(var j=12*i;j<12*(i+1);j++){
-                  labels[i][j]=data[j].Month;
-                 }
-                }
-                console.log(labels);
-              For(var i=0;i<7;i++){
+                
+             
                 var svg=d3.selectAll("#graph")
                   .append("svg")
                   .attr("width",width)
                   .attr("height",height)
                   .style("background","ghostwhite"); 
                 var xScale=d3.scale.ordinal()
-                    .domain(labels[i])
+                    .domain(labels)
                     .rangePoints([padding,width-5]);
                 var yScale=d3.scale.linear()
                     .domain([400,2500000])
@@ -209,7 +205,7 @@
                     .attr("fill", "white")
                     .attr("stroke", "#582130")
                     .attr("stroke-width", "1.5px"); 
-                }
+                
               });
             </script>  
           
