@@ -53,7 +53,7 @@
             var padding=90;
             var labels=new Array();
             var color=d3.scale.category10();
-            var parseDate = d3.time.format("%b-%d-%y").parse;
+            //var parseDate = d3.time.format("%b-%d-%y").parse;
             
             
                 
@@ -133,6 +133,241 @@
                 d.Month = parseDate(d.Month);
                 d.EuropeanUnion = +d.EuropeanUnion;
                 });
+                 data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.Canada = +d.Canada;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.UnitedStates = +d.UnitedStates;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.Mexico = +d.Mexico;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.Bolivia = +d.Bolivia;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.Ecuador = +d.Ecuador;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.Peru = +d.Peru;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.Argentina = +d.Argentina;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.Brazil = +d.Brazil;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.Paraguay = +d.Paraguay;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.Uruguay = +d.Uruguay;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.Venezuela = +d.Venezuela;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.China = +d.China;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.Japan = +d.Japan;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.India = +d.India;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.Panama = +d.Panama;
+                });
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.Others = +d.Others;
+                });
+
+//svg.selectAll("#circle")
+                  //  .data(data)
+                  //  .enter()
+                  //  .append("circle")
+                  //  .attr("cx", function(d){return +xScale(d.Month);})
+                  //  .attr("cy", function(d){return +yScale(d.EuropeanUnion);})
+                  //  .attr("r", 5)
+                  //  .attr("fill", "white")
+                  //  .attr("stroke", function(d){return color(d.EuropeanUnion);})
+                  //  .attr("stroke-width", "1.5px");
+                  //svg.selectAll("#circle")
+                  //  .data(data)
+                  //  .enter()
+                  //  .append("circle")
+                  //  .attr("cx", function(d){return +xScale(d.Month);})
+                  //  .attr("cy", function(d){return +yScale(d.Canada);})
+                  //  .attr("r", 5)
+                  //  .attr("fill", "white")
+                  //  .attr("stroke", function(d){return color(d.Canada);})
+                  //  .attr("stroke-width", "1.5px");
+                  //  svg.selectAll("#circle")
+                  //  .data(data)
+                  //  .enter()
+                  //  .append("circle")
+                  //  .attr("cx", function(d){return +xScale(d.Month);})
+                  //  .attr("cy", function(d){return +yScale(d.UnitedStates);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.UnitedStates);})
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.Mexico);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.Mexico);})
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.Bolivia);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.Bolivia);})
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.Ecuador);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.Ecuador);})
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.Peru);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.Peru);})
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.Argentina);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.Argentina)})
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.Brazil);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.Brazil)})
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.Paraguay);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.Paraguay)})
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.Uruguay);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.Uruguay)})
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.Venezuela);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.Venezuela)})
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.China);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.China)})
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.Japan);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.Japan)})
+                    .attr("stroke-width", "1.5px")
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.India);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.India)})
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.Panama);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", function(d){return color(d.Panama)})
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.Others);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke",function(d){return color(d.Others)})
+                    .attr("stroke-width", "1.5px");
                 var svg=d3.selectAll("#graph")
                   .append("svg")
                   .attr("width",width)
@@ -159,9 +394,9 @@
                     .attr("transform","translate("+padding+",0)")
                     .call(yScale);
                    
-                  svg.append("path")
-                    .attr("class", "line")
-                    .attr("d", line1(data));
+                  //svg.append("path")
+                    //.attr("class", "line")
+                    //.attr("d", line1(data));
                  
                   
               });
