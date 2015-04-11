@@ -48,6 +48,8 @@
           <h2><a name="visualization2">Monthly Total Exports from Colombia to other Countries</a></h2>
           <div id="graph"></div>
             <script type="text/javascript">
+            var x=d3.scale.ordinal().rangePoints([padding,width-5]);
+            var y=d3.scale.linear().range([height-padding,padding]);
             var valueline = d3.svg.line()
                   .x(function(d) { return x(d.Month); })
                   .y(function(d) { return y(d.EuropeanUnion); });
