@@ -56,7 +56,7 @@
                 for(var i=0 ; i<data.length;i++){
                   labels[i]=data[i].Month;
                 }
-                console.log(labels);
+                
                 var svg=d3.selectAll("#graph")
                   .append("svg")
                   .attr("width",width)
@@ -90,8 +90,8 @@
                   //Draw graph lines
                   for(var i=1;i<7;i++){
                    svg.append("line") 
-                      .attr("x1",xScale(i*500)).attr("y1",height-padding)
-                      .attr("x2",xScale(i*500)).attr("y2",padding)
+                      .attr("x1",xScale(i*10)).attr("y1",height-padding)
+                      .attr("x2",xScale(i*10)).attr("y2",padding)
                       .attr("style","stroke:grey;stroke-width:1px")
                       .attr("shape-rendering:crispEdges");
                   }            
