@@ -55,7 +55,28 @@
             var color=d3.scale.category10();
             var parseDate = d3.time.format("%b-%d-%y").parse;
             
-            var line1 = d3.svg.line()
+            
+                
+              d3.csv("countries.csv",function(data){
+                
+                for(var i=0 ; i<data.length;i++){
+                  labels[i]=data[i].Month;
+                }
+                var x = d3.time.scale()
+                    .domain(labels)
+                    .range([0, width]);
+                var y = d3.scale.linear()
+                    .domain([0,5800000])
+                    .range([height, 0]);
+                var xScale = d3.svg.axis()
+                    .scale(x)
+                    .orient("bottom")
+                    .ticks(20);
+                var yScale = d3.svg.axis()
+                    .scale(y)
+                    .orient("left")
+                    .ticks(20);
+                    var line1 = d3.svg.line()
                 .x(function(d) { return x(d.Month); })
                 .y(function(d) { return y(d.EuropeanUnion); });
             var line2 = d3.svg.line()
@@ -106,26 +127,6 @@
             var line18 = d3.svg.line()
                 .x(function(d) { return x(d.Month); })
                 .y(function(d) { return y(d.Others); });    
-                
-              d3.csv("countries.csv",function(data){
-                
-                for(var i=0 ; i<data.length;i++){
-                  labels[i]=data[i].Month;
-                }
-                var x = d3.time.scale()
-                    .domain(labels)
-                    .range([0, width]);
-                var y = d3.scale.linear()
-                    .domain([0,5800000])
-                    .range([height, 0]);
-                var xScale = d3.svg.axis()
-                    .scale(x)
-                    .orient("bottom")
-                    .ticks(20);
-                var yScale = d3.svg.axis()
-                    .scale(y)
-                    .orient("left")
-                    .ticks(20);
                 data.forEach(function(d) {
                 d.Month = parseDate(d.Month);
                 d.EuropeanUnion = +d.EuropeanUnion;
