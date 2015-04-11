@@ -199,6 +199,13 @@
                     .attr("x",620)
                     .text("Month")
                     .style("fill","black");  
+                  svg2.append("text")
+                    .attr("class","title")
+                    .attr("text-anchor","end")
+                    .attr("y",50)
+                    .attr("x",800)
+                    .text("Exports to Mercosur Countries")
+                    .style("fill","black");  
                     svg2.selectAll("#circle")
                     .data(data)
                     .enter()
@@ -242,7 +249,14 @@
                     .attr("y",585)
                     .attr("x",620)
                     .text("Month")
-                    .style("fill","black");    
+                    .style("fill","black");  
+                  svg3.append("text")
+                    .attr("class","title")
+                    .attr("text-anchor","end")
+                    .attr("y",50)
+                    .attr("x",800)
+                    .text("Exports to CAN Countries")
+                    .style("fill","black");  
                     svg3.selectAll("#circle")
                     .data(data)
                     .enter()
@@ -286,7 +300,14 @@
                     .attr("y",585)
                     .attr("x",620)
                     .text("Month")
-                    .style("fill","black");    
+                    .style("fill","black");
+                  svg4.append("text")
+                    .attr("class","title")
+                    .attr("text-anchor","end")
+                    .attr("y",50)
+                    .attr("x",800)
+                    .text("Exports to China")
+                    .style("fill","black");
                     svg4.selectAll("#circle")
                     .data(data)
                     .enter()
@@ -332,7 +353,14 @@
                     .attr("y",585)
                     .attr("x",620)
                     .text("Month")
-                    .style("fill","black");    
+                    .style("fill","black"); 
+                  svg5.append("text")
+                    .attr("class","title")
+                    .attr("text-anchor","end")
+                    .attr("y",50)
+                    .attr("x",800)
+                    .text("Exports to Japan")
+                    .style("fill","black");  
                     svg5.selectAll("#circle")
                     .data(data)
                     .enter()
@@ -376,7 +404,14 @@
                     .attr("y",585)
                     .attr("x",620)
                     .text("Month")
-                    .style("fill","black");    
+                    .style("fill","black"); 
+                  svg6.append("text")
+                    .attr("class","title")
+                    .attr("text-anchor","end")
+                    .attr("y",50)
+                    .attr("x",800)
+                    .text("Exports to India")
+                    .style("fill","black");  
                     svg6.selectAll("#circle")
                     .data(data)
                     .enter()
@@ -388,7 +423,7 @@
                     .attr("stroke", " #0000ff")
                     .attr("stroke-width", "1.5px");
                    
-                     svg7.append("g")
+                  svg7.append("g")
                     .attr("class","axis")
                     .attr("transform","translate(0,"+(height-padding)+")")
                     .call(d3.svg.axis()
@@ -420,7 +455,14 @@
                     .attr("y",585)
                     .attr("x",620)
                     .text("Month")
-                    .style("fill","black");    
+                    .style("fill","black"); 
+                  svg7.append("text")
+                    .attr("class","title")
+                    .attr("text-anchor","end")
+                    .attr("y",50)
+                    .attr("x",800)
+                    .text("Exports to Panama")
+                    .style("fill","black");  
                    svg7.selectAll("#circle")
                     .data(data)
                     .enter()
@@ -432,7 +474,7 @@
                     .attr("stroke", " #ff0000")
                     .attr("stroke-width", "1.5px"); 
                   
-                    svg8.append("g")
+                  svg8.append("g")
                     .attr("class","axis")
                     .attr("transform","translate(0,"+(height-padding)+")")
                     .call(d3.svg.axis()
@@ -464,7 +506,14 @@
                     .attr("y",585)
                     .attr("x",620)
                     .text("Month")
-                    .style("fill","black");    
+                    .style("fill","black"); 
+                  svg8.append("text")
+                    .attr("class","title")
+                    .attr("text-anchor","end")
+                    .attr("y",50)
+                    .attr("x",800)
+                    .text("Exports to European Union Countries")
+                    .style("fill","black");  
                   svg8.selectAll("#circle")
                     .data(data)
                     .enter()
@@ -508,7 +557,14 @@
                     .attr("y",585)
                     .attr("x",620)
                     .text("Month")
-                    .style("fill","black");    
+                    .style("fill","black");  
+                  svg9.append("text")
+                    .attr("class","title")
+                    .attr("text-anchor","end")
+                    .attr("y",50)
+                    .attr("x",800)
+                    .text("Exports to Other Countries")
+                    .style("fill","black");  
                    svg9.selectAll("#circle")
                     .data(data)
                     .enter()
