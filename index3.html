@@ -318,11 +318,12 @@
                     .attr("fill", "white")
                     .attr("stroke", "#f4b400")
                     .attr("stroke-width", "1.5px")
-                    .append("text")
-                    .attr("x",function(d){return xScale(d.Month)+1;})
-                    .attr("y",function(d){return 1+height-padding-0.00008801*(d.China);})
-                    .text(function(d){return "China("+d.Month+","+d.China+")";});
-                    
+                    .on("mouseover",function(d){
+                      svg5.append("text")
+                          .attr("x",function(d){return xScale(d.Month)+1;})
+                          .attr("y",function(d){return 1+height-padding-0.00008801*(d.China);})
+                          .text(function(d){return "China("+d.Month+","+d.China+")";});
+                    });
                   svg5.append("g")
                     .attr("class","axis")
                     .attr("transform","translate(0,"+(height-padding)+")")
