@@ -49,9 +49,9 @@
           <div id="graph"></div>
             <script type="text/javascript">
               d3.csv("countries.csv",function(data){
-                var width=600;
-                var height=400;
-                var padding= 50;
+                var width=6000;
+                var height=4000;
+                var padding=50;
                 var labels=new Array();
                 for(var i=0 ; i<data.length;i++){
                   labels[i]=data[i].Month;
@@ -64,7 +64,7 @@
                   .style("background","ghostwhite"); 
                 var xScale=d3.scale.ordinal()
                     .domain(labels)
-                    .rangePoints([0,1048]);
+                    .rangePoints([padding,width-padding]);
                 var yScale=d3.scale.linear()
                     .domain([100,5800000])
                     .range([height-padding,padding]);
@@ -92,11 +92,11 @@
       </div>
     </div>
     <!--IndexLeft-->
-    <div id="myIndex">
+   <!-- <div id="myIndex">
       <h2>Index</h2>
       <h3><a href="#source8">Data Source information</a></h3>
       <h3><a href="#visualization2">Monthly Total Exports from Colombia to other Countries</a></h3>
-    </div>
+    </div>-->
 
   <!--Google Analytics-->
  <!-- <script>
