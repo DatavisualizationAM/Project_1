@@ -52,27 +52,13 @@
               var height=600;
               var padding=90;
               var labels=new Array();
-              //var parseDate = d3.time.format("%b-%y").parse;
-              var x=d3.scale.ordinal().rangePoints([padding,width-5]);
-              var y=d3.scale.linear().range([height-padding,padding]);
-            
-              var line = d3.svg.line()
-                  .x(function(d) { return x(d.Japan); })
-                  .y(function(d) { return y(d.EuropeanUnion); });
-                  
+        
               d3.csv("countries.csv",function(data){
                 
                 for(var i=0 ; i<data.length;i++){
                   labels[i]=data[i].Month;
                 }
-               // d3.tsv("data.tsv", function(error, data) {
-                //   data.forEach(function(d) {
-                //    d.Month = parseDate(d.Month);
-                //    d.EuropeanUnion = +d.EuropeanUnion;
-                //    console.log(d.month);
-                //    console.log(d.EuropeanUnion);
-                // });
-                
+              
                 var svg=d3.selectAll("#graph")
                   .append("svg")
                   .attr("width",width)
@@ -103,9 +89,16 @@
                     .scale(yScale)
                     .orient("left")
                     .ticks(20));
-                  svg.append("path")
-                    .attr("class", "line")
-                    .attr("d", line(data));  
+                  svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return +yScale(d.EuropeanUnion);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", "blue")
+                    .attr("stroke-width", "1.5px")
                        
               });
             </script>  
