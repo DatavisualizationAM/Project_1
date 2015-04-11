@@ -61,9 +61,13 @@
                   .y(function(d) { return y(d.EuropeanUnion); });
                   
               d3.csv("countries.csv",function(data){
+                
                 for(var i=0 ; i<data.length;i++){
                   labels[i]=data[i].Month;
                 }
+                data.forEach(function(d){
+                  d.Month=parseDate(d.Month);
+                });
                 
                 var svg=d3.selectAll("#graph")
                   .append("svg")
@@ -71,7 +75,9 @@
                   .attr("height",height)
                   .style("background","ghostwhite"); 
                 var xScale=d3.scale.ordinal()
-                    .domain(labels)
+                    .domain(d3.extent(data, function(d) { return d.Month; }));
+    
+
                     .rangePoints([padding,width-5]);
                 var yScale=d3.scale.linear()
                     .domain([100,5800000])
