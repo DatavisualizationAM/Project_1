@@ -89,11 +89,22 @@
                     .scale(yScale)
                     .orient("left")
                     .ticks(20));
+                 svg.append("text")
+                    .attr("class","name")
+                    .attr("text-anchor","end")
+                    .attr("y",35)
+                    .attr("x",-50)
+                    .attr("transform","rotate(-90)")
+                    .text("Exports in Thousand Dollars")
+                    .style("fill","black");
+                  svg.append("text")
+                    .attr("class","name")
+                    .attr("text-anchor","end")
+                    .attr("y",380)
+                    .attr("x",200)
+                    .text("Month")
+                    .style("fill","black");    
                   
-                  //for(var i=0;i<Countries.length;i++){
-                    //var country=Countries[i];
-                    //console.log(country);
-                    
                   svg.selectAll("#circle")
                     .data(data)
                     .enter()
