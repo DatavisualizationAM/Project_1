@@ -56,7 +56,7 @@
               var x=d3.scale.ordinal().rangePoints([padding,width-5]);
               var y=d3.scale.linear().range([height-padding,padding]);
             
-              var valueline = d3.svg.line()
+              var line = d3.svg.line()
                   .x(function(d) { return x(d.Month); })
                   .y(function(d) { return y(d.EuropeanUnion); });
                   
@@ -65,9 +65,13 @@
                 for(var i=0 ; i<data.length;i++){
                   labels[i]=data[i].Month;
                 }
-                data.forEach(function(d){
-                  d.Month=parseDate(d.Month);
-                });
+                d3.tsv("data.tsv", function(error, data) {
+                   data.forEach(function(d) {
+                    d.Month = parseDate(d.Month);
+                    d.EuropeanUnion = +d.EuropeanUnion;
+                    console.log(d.month);
+                    console.log(d.EuropeanUnion);
+                 });
                 
                 var svg=d3.selectAll("#graph")
                   .append("svg")
