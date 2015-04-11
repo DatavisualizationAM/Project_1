@@ -57,7 +57,7 @@
               var y=d3.scale.linear().range([height-padding,padding]);
             
               var line = d3.svg.line()
-                  .x(function(d) { return x(d.Month); })
+                  .x(function(d) { return x(d.Japan); })
                   .y(function(d) { return y(d.EuropeanUnion); });
                   
               d3.csv("countries.csv",function(data){
