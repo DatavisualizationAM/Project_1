@@ -48,11 +48,12 @@
           <h2><a name="visualization2">Monthly Total Exports from Colombia to other Countries</a></h2>
           <div id="graph"></div>
             <script type="text/javascript">
-              var width=1200;
-              var height=600;
-              var padding=90;
-              var labels=new Array();
-        
+            var width=1200;
+            var height=600;
+            var padding=90;
+            var labels=new Array();
+            var Countries=["EuropeanUnion","Canada","UnitedStates","Mexico","Bolivia","Equador","Peru","Argentina","Brazil","Paraguay","Uruguay","Venezuela","China","Japan","India","Panama","Others"]
+  ;      
               d3.csv("countries.csv",function(data){
                 
                 for(var i=0 ; i<data.length;i++){
@@ -89,17 +90,20 @@
                     .scale(yScale)
                     .orient("left")
                     .ticks(20));
-                  svg.selectAll("#circle")
+                  
+                  for(var=i;i<Countries.length;i++){
+                    var country=Countries[i];
+                    svg.selectAll("#"+i+"circle")
                     .data(data)
                     .enter()
                     .append("circle")
                     .attr("cx", function(d){return +xScale(d.Month);})
-                    .attr("cy", function(d){return +yScale(d.EuropeanUnion);})
+                    .attr("cy", function(d){return +yScale(d.country);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "blue")
+                    .attr("stroke", "rgb("+100*i+","+100*i+","+100*i*")")
                     .attr("stroke-width", "1.5px")
-                       
+                  }
               });
             </script>  
           
