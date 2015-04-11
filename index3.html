@@ -49,8 +49,8 @@
           <div id="graph"></div>
             <script type="text/javascript">
               d3.csv("countries.csv",function(data){
-                var width=6000;
-                var height=4000;
+                var width=1000;
+                var height=600;
                 var padding=50;
                 var labels=new Array();
                 for(var i=0 ; i<data.length;i++){
@@ -82,7 +82,11 @@
                     .call(d3.svg.axis()
                     .scale(yScale)
                     .orient("left")
-                    .ticks(50));
+                    .ticks(50))
+                    .selectAll("text")
+                    .attr("transform", "rotate(90)")
+                    .style("text-anchor", "start")
+                    .attr("fill","black");
               });
             </script>  
           
