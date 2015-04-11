@@ -48,7 +48,41 @@
           <h2><a name="visualization2">Monthly Total Exports from Colombia to other Countries</a></h2>
           <div id="graph"></div>
             <script type="text/javascript">
-              
+              d3.csv("countries.csv",function(data){
+                var width=600;
+                var height=400;
+                var padding= 50;
+                var labels=new Array();
+                for(var i=0 ; i<data.length;i++){
+                  labels[i]=data[i].Month;
+                }
+                var svg=d3.selectAll(#graph)
+                  .append("svg")
+                  .attr("width",w)
+                  .attr("height",h)
+                  .style("background","ghostwhite"); 
+                var xScale=d3.scale.ordinal()
+                    .domain(labels)
+                    .rangepoints([padding,width-padding]);
+                var yScale=d3.scale.linear()
+                    .domain([100,5800000])
+                    .range(height-padding,padding);
+                    
+                 svg.append("g")
+                    .attr("class","axis")
+                    .attr("transform","translate(0,"+(height-padding)+")")
+                    .call(d3.svg.axis()
+                    .scale(xScale)
+                    .orient("bottom")
+                    .ticks(50));
+                  svg.append("g")
+                    .attr("class","axis")
+                    .attr("transform","translate("+padding+",0)")
+                    .call(d3.svg.axis()
+                    .scale(yScale)
+                    .orient("left")
+                    .ticks(50));
+              });
             </script>  
           
           
