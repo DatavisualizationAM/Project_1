@@ -146,7 +146,14 @@
                     .attr("y",585)
                     .attr("x",620)
                     .text("Month")
-                    .style("fill","black");    
+                    .style("fill","black");   
+                  svg1.append("text")
+                    .attr("class","title")
+                    .attr("text-anchor","end")
+                    .attr("y",50)
+                    .attr("x",800)
+                    .text("Exports to NAFTA Countries")
+                    .style("fill","black");  
                   
                   svg1.selectAll("#circle")
                     .data(data)
