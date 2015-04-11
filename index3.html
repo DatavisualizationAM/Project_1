@@ -67,7 +67,7 @@
                     .rangepoints([padding,width-padding]);
                 var yScale=d3.scale.linear()
                     .domain([100,5800000])
-                    .range(height-padding,padding);
+                    .range([height-padding,padding]);
                     
                  svg.append("g")
                     .attr("class","axis")
