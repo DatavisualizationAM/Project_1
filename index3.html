@@ -52,6 +52,7 @@
               var height=600;
               var padding=90;
               var labels=new Array();
+              var parseDate = d3.time.format("%b-%y").parse;
               var x=d3.scale.ordinal().rangePoints([padding,width-5]);
               var y=d3.scale.linear().range([height-padding,padding]);
             
