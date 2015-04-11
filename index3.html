@@ -135,10 +135,9 @@
                  svg.append("g")
                     .attr("class","axis")
                     .attr("transform","translate(0,"+(height-padding)+")")
-                    .call(d3.svg.axis()
-                    .scale(xScale)
+                    .call(xScale)
                     .orient("bottom")
-                    .ticks(20));
+                    .ticks(20);
                     svg.selectAll("text")
                     .attr("transform", "translate(10,7) rotate(90)")
                     .style("text-anchor", "start")
@@ -146,10 +145,9 @@
                   svg.append("g")
                     .attr("class","axis")
                     .attr("transform","translate("+padding+",0)")
-                    .call(d3.svg.axis()
-                    .scale(yScale)
+                    .call(yScale)
                     .orient("left")
-                    .ticks(20));
+                    .ticks(20);
                   svg.append("path")
                     .attr("class", "line")
                     .attr("d", line1(data));
