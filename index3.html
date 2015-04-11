@@ -126,6 +126,10 @@
                     .scale(y)
                     .orient("left")
                     .ticks(20);
+                data.forEach(function(d) {
+                d.Month = parseDate(d.Month);
+                d.EuropeanUnion = +d.EuropeanUnion;
+                });
                 var svg=d3.selectAll("#graph")
                   .append("svg")
                   .attr("width",width)
