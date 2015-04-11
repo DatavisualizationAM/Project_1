@@ -52,8 +52,7 @@
             var height=600;
             var padding=90;
             var labels=new Array();
-            var Countries=["EuropeanUnion","Canada","UnitedStates","Mexico","Bolivia","Equador","Peru","Argentina","Brazil","Paraguay","Uruguay","Venezuela","China","Japan","India","Panama","Others"]
-  ;      
+            var color=scale.category10();
               d3.csv("countries.csv",function(data){
                 
                 for(var i=0 ; i<data.length;i++){
@@ -102,7 +101,7 @@
                     .attr("cy", function(d){return +yScale(d.EuropeanUnion);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(105,105,105)")
+                    .attr("stroke", function(d){return color(d.EuropeanUnion;)})
                     .attr("stroke-width", "1.5px");
                   svg.selectAll("#circle")
                     .data(data)
@@ -112,7 +111,7 @@
                     .attr("cy", function(d){return +yScale(d.Canada);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(155,155,155)")
+                    .attr("stroke", function(d){return color(d.Canada;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -122,7 +121,7 @@
                     .attr("cy", function(d){return +yScale(d.UnitedStates);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(205,205,205)")
+                    .attr("stroke", function(d){return color(d.UnitedStates;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -132,7 +131,7 @@
                     .attr("cy", function(d){return +yScale(d.Mexico);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(255,255,255)")
+                    .attr("stroke", function(d){return color(d.Mexico;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -142,7 +141,7 @@
                     .attr("cy", function(d){return +yScale(d.Bolivia);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(305,305,305)")
+                    .attr("stroke", function(d){return color(d.Bolivia;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -152,7 +151,7 @@
                     .attr("cy", function(d){return +yScale(d.Ecuador);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(355,355,355)")
+                    .attr("stroke", function(d){return color(d.Ecuador;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -162,7 +161,7 @@
                     .attr("cy", function(d){return +yScale(d.Peru);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(405,405,405)")
+                    .attr("stroke", function(d){return color(d.Peru;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -172,7 +171,7 @@
                     .attr("cy", function(d){return +yScale(d.Argentina);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(455,455,455)")
+                    .attr("stroke", function(d){return color(d.Argentina;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -182,7 +181,7 @@
                     .attr("cy", function(d){return +yScale(d.Brazil);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(505,505,505)")
+                    .attr("stroke", function(d){return color(d.Brazil;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -192,7 +191,7 @@
                     .attr("cy", function(d){return +yScale(d.Paraguay);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(555,555,555)")
+                    .attr("stroke", function(d){return color(d.Paraguay;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -202,7 +201,7 @@
                     .attr("cy", function(d){return +yScale(d.Uruguay);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(605,605,605)")
+                    .attr("stroke", function(d){return color(d.Uruguay;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -212,7 +211,7 @@
                     .attr("cy", function(d){return +yScale(d.Venezuela);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(655,655,655)")
+                    .attr("stroke", function(d){return color(d.Venezuela;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -222,7 +221,7 @@
                     .attr("cy", function(d){return +yScale(d.China);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(705,705,705)")
+                    .attr("stroke", "function(d){return color(d.China;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -232,7 +231,7 @@
                     .attr("cy", function(d){return +yScale(d.Japan);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(755,755,755)")
+                    .attr("stroke", function(d){return color(d.Japan;)})
                     .attr("stroke-width", "1.5px")
                     svg.selectAll("#circle")
                     .data(data)
@@ -242,7 +241,7 @@
                     .attr("cy", function(d){return +yScale(d.India);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(805,805,805)")
+                    .attr("stroke", function(d){return color(d.India;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -252,7 +251,7 @@
                     .attr("cy", function(d){return +yScale(d.Panama);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(855,855,855)")
+                    .attr("stroke", function(d){return color(d.Panama;)})
                     .attr("stroke-width", "1.5px");
                     svg.selectAll("#circle")
                     .data(data)
@@ -262,7 +261,7 @@
                     .attr("cy", function(d){return +yScale(d.Others);})
                     .attr("r", 5)
                     .attr("fill", "white")
-                    .attr("stroke", "rgb(905,905,905)")
+                    .attr("stroke",function(d){return color(d.Others;)})
                     .attr("stroke-width", "1.5px");
               });
             </script>  
