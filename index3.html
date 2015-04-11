@@ -147,7 +147,7 @@
                     .attr("stroke", "#f4b400")
                     .attr("stroke-width", "1.5px")
                     .append("title")
-                    .text(function(g){return "China("+d.Month+","+d.China+")";});
+                    .text(function(d){return "China("+d.Month+","+d.China+")";});
                     svg.selectAll("#circle")
                     .data(data)
                     .enter()
