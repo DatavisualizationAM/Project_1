@@ -124,6 +124,57 @@
                     .attr("fill", "white")
                     .attr("stroke", "green")
                     .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return height-padding-0.0002125*(d.Argentina);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", "#756bb1")
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return height-padding-0.0002125*(d.Brazil);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", "#fd8d3c")
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return height-padding-0.0002125*(d.Paraguay);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", "#7b4173")
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return height-padding-0.0002125*(d.Uruguay);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", "#de9ed6")
+                    .attr("stroke-width", "1.5px");
+                    svg.selectAll("#circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function(d){return +xScale(d.Month);})
+                    .attr("cy", function(d){return height-padding-0.0002125*(d.Venezuela);})
+                    .attr("r", 5)
+                    .attr("fill", "white")
+                    .attr("stroke", " #637939")
+                    .attr("stroke-width", "1.5px");
+
                    
               });
             </script>  
