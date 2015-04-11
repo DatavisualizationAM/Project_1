@@ -52,7 +52,7 @@
             var height=600;
             var padding=90;
             var labels=new Array();
-            var color=scale.category10();
+            var color=d3.scale.category10();
               d3.csv("countries.csv",function(data){
                 
                 for(var i=0 ; i<data.length;i++){
