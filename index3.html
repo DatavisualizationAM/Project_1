@@ -52,7 +52,7 @@
               var height=600;
               var padding=90;
               var labels=new Array();
-              var parseDate = d3.time.format("%b-%y").parse;
+              //var parseDate = d3.time.format("%b-%y").parse;
               var x=d3.scale.ordinal().rangePoints([padding,width-5]);
               var y=d3.scale.linear().range([height-padding,padding]);
             
@@ -65,13 +65,13 @@
                 for(var i=0 ; i<data.length;i++){
                   labels[i]=data[i].Month;
                 }
-                d3.tsv("data.tsv", function(error, data) {
-                   data.forEach(function(d) {
-                    d.Month = parseDate(d.Month);
-                    d.EuropeanUnion = +d.EuropeanUnion;
-                    console.log(d.month);
-                    console.log(d.EuropeanUnion);
-                 });
+               // d3.tsv("data.tsv", function(error, data) {
+                //   data.forEach(function(d) {
+                //    d.Month = parseDate(d.Month);
+                //    d.EuropeanUnion = +d.EuropeanUnion;
+                //    console.log(d.month);
+                //    console.log(d.EuropeanUnion);
+                // });
                 
                 var svg=d3.selectAll("#graph")
                   .append("svg")
@@ -79,7 +79,7 @@
                   .attr("height",height)
                   .style("background","ghostwhite"); 
                 var xScale=d3.scale.ordinal()
-                    .domain(d3.extent(data, function(d) { return d.Month; }))
+                    .domain(labels)
                     .rangePoints([padding,width-5]);
                 var yScale=d3.scale.linear()
                     .domain([100,5800000])
@@ -105,7 +105,7 @@
                     .ticks(20));
                   svg.append("path")
                     .attr("class", "line")
-                    .attr("d", valueline(data));  
+                    .attr("d", line(data));  
                        
               });
             </script>  
