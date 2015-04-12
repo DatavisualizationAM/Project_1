@@ -43,9 +43,15 @@
         </table>
       </div>
       <div  id="visualizations">
+    
         <!--Visualization-->
         <div>
           <h2><a name="visualization2">Monthly Total Exports from Colombia to other Countries</a></h2>
+          <ul><a name="description">The subsequent visualisations show the exports from Colombia to the different country groups it trades with. Here, the values of exports are in thousands of dollars. This groups are formed as follows:</a>
+            <li>NAFTA: Canada, United States and Mexico</li>
+            <li>CAN: Bolivia, Peru and Equador</li>
+            <li>Mercosur: Argentina, Paraguay, Uruguay, Brazil and Venezuela</li>
+          </ul>
           <div id="graph"></div>
             <script type="text/javascript">
             var width=1200;
@@ -328,6 +334,7 @@
                     .attr("fill", "white")
                     .attr("stroke", "#f4b400")
                     .attr("stroke-width", "1.5px");
+                    
                   svg5.append("g")
                     .attr("class","axis")
                     .attr("transform","translate(0,"+(height-padding)+")")
@@ -531,6 +538,7 @@
                     .attr("fill", "white")
                     .attr("stroke", "#838e91")
                     .attr("stroke-width", "1.5px");
+
                   svg9.append("g")
                     .attr("class","axis")
                     .attr("transform","translate(0,"+(height-padding)+")")
@@ -582,10 +590,12 @@
                     .attr("stroke", "#582130")
                     .attr("stroke-width", "1.5px")
                     .on("mouseover",function(d){
-                      div1.transition()
-                      .duration(200)
-                      .text("Month:"+d.Month+"\n"+"Exports: $"+d.Others);
-                       });; 
+                      d3.select(this)
+                      .enter()
+                      .append("text")
+                      .text(function(d){return "Month:"+d.Month+"\n"+"Exports: $"+d.Others;})
+                    });
+                    
                 
               });
             </script>  
