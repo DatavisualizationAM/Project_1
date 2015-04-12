@@ -54,10 +54,13 @@
             var labels=new Array();
             
             var color=d3.scale.category10();
-            var label=d3.select("body")
-                .append("div")
-                .attr("class","label")
-                .style("opacity",0);
+            var div1=d3.select("body").append("div")
+              .attr("class","label")
+              .style("fill","black")
+              .style("position","relative")
+              .style("height","15px")
+              .style("width","30px")
+              .style("opacity", .9);
             
               d3.csv("countries.csv",function(data){
                 
@@ -170,16 +173,12 @@
                     .attr("fill", "white")
                     .attr("stroke", "#1e90ff")
                     .attr("stroke-width", "1.5px")
-                    .on("mouseover",function(d){
-                      svg1.selectAll("#circle")
-                      .attr("fill","black");
-                     // label.transition()
-                    //  .duration(200)
-                    //  .style("opacity",9);
-                    //  label.html(d.NAFTA)
-                    //  .style("left","20px")
-                    //  .style("top","20px");
-                    })
+                   .on("mouseover",function(d){
+                      div1.transition()
+                      .duration(200)
+                      .text("Month:"+d.Month+"\n"+"Exports: $"+d.Nafta);
+                       });
+                    
                     
                     svg2.append("g")
                     .attr("class","axis")
