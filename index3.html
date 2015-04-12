@@ -165,6 +165,11 @@
                     .attr("fill", "white")
                     .attr("stroke", "#1e90ff")
                     .attr("stroke-width", "1.5px");
+                svg1.append("g")
+                    .append("text")
+                    .attr("x",function(d){return +xScale(d.Month);})
+                    .attr("y",function(d){return height-padding-0.00008801*(d.NAFTA);})
+                    .text(function(d){return "Month:"+d.Month+"\n"+"Exports: $"+d.NAFTA})
                     
                     svg2.append("g")
                     .attr("class","axis")
