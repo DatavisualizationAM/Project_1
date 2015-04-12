@@ -33,9 +33,12 @@
         <!--Exports by category-->
         <div>
           <h2><a name="visualization1">Exports goods by category</a></h2>
-          <div style="margin-left:40px;margin-right:40px;">
-            <p> The main conclusion that is worth highlighting from the previous visualization is the concentration of the exports in only one category. Fuels have increased its participation as a percentage of all exports, which can be seen as a risky tendence if it holds on the long term because it creates a dependance on the international prices of those commodities. Because the exchange market is highly sensible on the inflow of dollars, it could ultimately create an extreme valuation or devaluation of the colombian currency.</p>
-            <p> .</p>
+          <div style="margin-left:40px;margin-right:40px; text-align:justify;">
+            <p> The main conclusion that is worth highlighting from the below visualization is the concentration of the exports in only one category.
+            </p>
+            <p> Fuels have increased its participation as a percentage of all exports, which can be seen as a risky tendence if it holds on the long term because it creates a dependency on the international prices of those commodities. Because the exchange market is highly sensible on the inflow of dollars, it could ultimately create an extreme revaluation or devaluation of the colombian currency.</p>
+            <p> The next treemap shows total exports in thousands of dollars for each category. The orange category stands for fuels, the green one for manufactured goods, the blue one for agricultural goods and the red one for others. Each category is divided into subcategories which give a more detailed description on the those exports. 
+            </p>
           </div>
           <form>
             <label><input type="radio" name="mode" value="0" checked> 2006</label>
@@ -65,7 +68,7 @@
 
       //Create treemap layout
       var myTreemap= d3.layout.treemap()
-        .size([width,height])
+        .size([width-20,height-20])
         .sticky(true)
         .padding(0)
         .value(function(d) {return +d.values.y2006; })    
