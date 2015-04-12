@@ -171,12 +171,14 @@
                     .attr("stroke", "#1e90ff")
                     .attr("stroke-width", "1.5px")
                     .on("mouseover",function(d){
-                      label.transition()
-                      .duration(200)
-                      .style("opacity",9);
-                      label.html(d.NAFTA)
-                      .style("left","20px")
-                      .style("top","20px");
+                      svg1.selectAll("#circle")
+                      .attr("fill","black");
+                     // label.transition()
+                    //  .duration(200)
+                    //  .style("opacity",9);
+                    //  label.html(d.NAFTA)
+                    //  .style("left","20px")
+                    //  .style("top","20px");
                     })
                     
                     svg2.append("g")
