@@ -172,12 +172,8 @@
                     .attr("r", 3)
                     .attr("fill", "white")
                     .attr("stroke", "#1e90ff")
-                    .attr("stroke-width", "1.5px")
-                   .on("mouseover",function(d){
-                      div1.transition()
-                      .duration(200)
-                      .text("Month:"+d.Month+"\n"+"Exports: $"+d.Nafta);
-                       });
+                    .attr("stroke-width", "1.5px");
+                   
                     
                     
                     svg2.append("g")
@@ -585,7 +581,12 @@
                     .attr("r", 3)
                     .attr("fill", "white")
                     .attr("stroke", "#582130")
-                    .attr("stroke-width", "1.5px"); 
+                    .attr("stroke-width", "1.5px")
+                    .on("mouseover",function(d){
+                      div1.transition()
+                      .duration(200)
+                      .text("Month:"+d.Month+"\n"+"Exports: $"+d.Others);
+                       });; 
                 
               });
             </script>  
