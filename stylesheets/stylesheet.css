@@ -2,9 +2,11 @@
 *{
 	font-family:Garamond;
 }
-
+rect:hover {
+	fill: cyan;
+}
 #myheader{
-	height: 100px;
+	height: 120px;
 	min-width:930px;
 	text-align:center;
 	background-color: #F0F0F0 ;
@@ -14,7 +16,7 @@
 #myIndex{
 	position:fixed;
 	top:100px;
-	top:122px;
+	top:142px;
 	text-align:right;
 	background-color: white ;
 	line-height: 100%;
