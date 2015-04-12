@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Project 1 : HW 2 for Data Visualization - Visualizations on Selected dataset">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <script src="http://code.jquery.com/jquery-1.11.2.js"></script>
+    <script type"text/javascript" src="javascripts/main.js"></script>
+    <script src="javascripts/d3.js"></script>
+    <title>Project</title>
+  </head>
+  
+  <body>
+    <!--Header-->
+    <div id="myheader">
+     <h1>Data Visualization Project</h1>
+     <h2>IE590</h2>
+    </div>
+    <!--IndexLeft-->
+   <div id="myIndex">
+      <h2>Index</h1>
+      <h3><a href="index.html">Project Participants</a></h2>
+      <h3><a href="index_sources.html">Potential Data Sources</a></h2>
+      <h3><a href="index_time.html">The American Time Use</a></h2>
+      <h3><a href="index_Exports.html">Colombian Exports</a></h2>
+    </div>
+    <div id="myBody">
+      <!--Body-->
+      <!--Exports-->
+      <div  id="participants">
+        <!--Exports by category-->
+        <div>
+          <h2><a name="visualization1">Exports goods by category</a></h2>
+          <div style="margin-left:40px;margin-right:40px;">
+            <p> The main conclusion that is worth highlighting from the previous visualization is the concentration of the exports in only one category. Fuels have increased its participation as a percentage of all exports, which can be seen as a risky tendence if it holds on the long term because it creates a dependance on the international prices of those commodities. Because the exchange market is highly sensible on the inflow of dollars, it could ultimately create an extreme valuation or devaluation of the colombian currency.</p>
+            <p> .</p>
+          </div>
+          <form>
+            <label><input type="radio" name="mode" value="0" checked> 2006</label>
+            <label><input type="radio" name="mode" value="1"> 2007</label>
+            <label><input type="radio" name="mode" value="2"> 2008</label>
+            <label><input type="radio" name="mode" value="3"> 2009</label>
+            <label><input type="radio" name="mode" value="4"> 2010</label>
+            <label><input type="radio" name="mode" value="5"> 2011</label>
+            <label><input type="radio" name="mode" value="6"> 2012</label>
+            <label><input type="radio" name="mode" value="7"> 2013</label>
+            <label><input type="radio" name="mode" value="8"> 2014</label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  <!--Treemap-->
+    <script>
+      width=650;
+      height=400;
+      var color = d3.scale.category10();
+
+      //Create svg
+      var mySvg= d3.select("#participants").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+      //Create treemap layout
+      var myTreemap= d3.layout.treemap()
+        .size([width,height])
+        .sticky(true)
+        .padding(0)
+        .value(function(d) {return +d.values.y2006; })    
+        .children(function(d) {return d.values; });
+
+      var year=8;
+      //Read dataser 
+      d3.csv("datasets/goods.csv", function(data) {
+        //Nest dataser
+        var nest=d3.nest()
+                    .key(function(d){return "Grandpa";})
+                    .key(function(d){return d.area;})
+                    .key(function(d){return d.bien;})
+                    .rollup(function(d){return {
+                      y2006: d3.sum(d,function(d){return d.anio==="2006"?d.expo:0;}),
+                      y2007: d3.sum(d,function(d){return d.anio==="2007"?d.expo:0;}),
+                      y2008: d3.sum(d,function(d){return d.anio==="2008"?d.expo:0;}),
+                      y2009: d3.sum(d,function(d){return d.anio==="2009"?d.expo:0;}),
+                      y2010: d3.sum(d,function(d){return d.anio==="2010"?d.expo:0;}),
+                      y2011: d3.sum(d,function(d){return d.anio==="2011"?d.expo:0;}),
+                      y2012: d3.sum(d,function(d){return d.anio==="2012"?d.expo:0;}),
+                      y2013: d3.sum(d,function(d){return d.anio==="2013"?d.expo:0;}),
+                      y2014: d3.sum(d,function(d){return d.anio==="2014"?d.expo:0;})
+                    }})
+                    .entries(data);
+        //Create rectangles
+        mySvg.selectAll("rect")
+          .data(myTreemap.nodes(nest[0]))
+          .enter()
+          .append("rect")
+            .attr("x", function(d){ return d.x;})
+            .attr("y", function(d){return d.y;})
+            .attr("width", function(d){return d.dx;})
+            .attr("height", function(d){return d.dy;})
+            .attr("stroke", "white")
+            .attr("fill", function(d){return d.children? "white": color(d.parent.value);})
+            .append("title").text(function(d){return "Category: "+d.key+"\n"+"Expots:"+d.value;});
+        //Create text
+        mySvg.selectAll("text")
+          .data(myTreemap.nodes(nest[0]))
+          .enter()
+          .append("text")
+            .attr("x", function(d){return d.x+d.dx/2-50;})
+            .attr("y", function(d){return d.y+d.dy/2+5;})
+            .attr("fill", "black")
+            .attr("style","font-size:20px")
+            .text(function(d){return !d.children? null : d.parent? d.key: null;});
+            console.log(myTreemap.nodes(nest[0]))
+
+        //Update teemap when clicking checkcircles
+        d3.selectAll("input").on("change", function change() {
+          var myValue = this.value === "0"? function(d) { return d.values.y2006;}:
+            this.value === "1"? function(d) { return d.values.y2007;}:
+            this.value === "2"? function(d) { return d.values.y2008;}:
+            this.value === "3"? function(d) { return d.values.y2009;}:
+            this.value === "4"? function(d) { return d.values.y2010;}:
+            this.value === "5"? function(d) { return d.values.y2011;}:
+            this.value === "6"? function(d) { return d.values.y2012;}:
+            this.value === "7"? function(d) { return d.values.y2013;}:
+             function(d) { return d.values.y2014;};
+          //Update rectangles
+          mySvg.selectAll("rect")
+            .data(myTreemap.value(myValue))
+            .transition()
+            .duration(500)
+            .attr("x", function(d){return d.x;})
+            .attr("y", function(d){return d.y;})
+            .attr("width", function(d){return d.dx;})
+            .attr("height", function(d){return d.dy;});
+          //Update text
+          mySvg.selectAll("text")
+            .data(myTreemap.value(myValue))
+            .transition()
+            .duration(500)
+            .attr("x", function(d){return d.x+d.dx/2-50;})
+            .attr("y", function(d){return d.y+d.dy/2+5;})
+        });
+      });
+    </script>
+  <!--Google Analytics-->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60205051-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+  </body>
+</html>
