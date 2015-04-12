@@ -54,6 +54,11 @@
             var labels=new Array();
             
             var color=d3.scale.category10();
+            var label=d3.select("body")
+                .append("div")
+                .attr("class","label")
+                .style("opacity",0);
+            
               d3.csv("countries.csv",function(data){
                 
                 
@@ -165,10 +170,14 @@
                     .attr("fill", "white")
                     .attr("stroke", "#1e90ff")
                     .attr("stroke-width", "1.5px")
-                    .append("text")
-                    .attr("x",function(d){return +xScale(d.Month);})
-                    .attr("y",function(d){return height-padding-0.00008801*(d.NAFTA);})
-                    .text(function(d){return "Month:"+d.Month+"\n"+"Exports: $"+d.NAFTA})
+                    .on("mouseover",function(d){
+                      label.transition()
+                      .duration(200)
+                      .style("opacity",9);
+                      label.text("HEY")
+                      .style("left","20px")
+                      .style("top","20px");
+                    })
                     
                     svg2.append("g")
                     .attr("class","axis")
