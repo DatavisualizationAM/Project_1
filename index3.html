@@ -104,8 +104,8 @@
           d3.csv("ExportsByCategory.csv", function(data) {
            
            
-          
-            //var layers = stack(nest.entries(data));
+          console.log(nest.entries(data));
+            var layers = stack(nest.entries(data));
             console.log(stack(nest.entries(data)));
             
                 svg.selectAll(".layer")
