@@ -114,7 +114,7 @@
                 .append("path")
                 .attr("class","layer")
                 .attr("d",function(d){return area(nest.entries(data));})
-                .style("fill",function(d){return color(i);});
+                .style("fill",function(d,i){return color(i);});
                 
                 svg.append("g")
                 .attr("class", "x axis")
