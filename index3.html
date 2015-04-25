@@ -103,41 +103,41 @@
             //  d.year = parseDate(d.year);
             //});
           
-            var goods = stack(color.domain().map(function(name) {
-              return {
-                name: name,
-                values: data.map(function(d) {
-                  return {date: d.year, y: d[name]};
-                })
-              };
-            }));
+          //  var goods = stack(color.domain().map(function(name) {
+          //    return {
+          //      name: name,
+          //      values: data.map(function(d) {
+          //        return {date: d.year, y: d[name]};
+          //      })
+          //    };
+          //  }));
           
           
-            var good = svg.selectAll(".good")
-                .data(goods)
-                .enter().append("g")
-                .attr("class", "good");
+        //    var good = svg.selectAll(".good")
+        //        .data(goods)
+        //        .enter().append("g")
+        //        .attr("class", "good");
           
-            good.append("path")
-                .attr("class", "area")
-                .attr("d", function(d) { return area(d.exports); })
-                .style("fill", function(d) { return color(d.name); });
+        //    good.append("path")
+        //        .attr("class", "area")
+        //        .attr("d", function(d) { return area(d.exports); })
+        //        .style("fill", function(d) { return color(d.name); });
           
-            good.append("text")
-                .datum(function(d) { return {name: d.name, value: d.exports[d.exports.length - 1]}; })
-                .attr("transform", function(d) { return "translate(" + x(d.exports.year) + "," + y(d.exports.y0 + d.exports.y / 2) + ")"; })
-                .attr("x", -6)
-                .attr("dy", ".35em")
-                .text(function(d) { return d.name; });
+        //    good.append("text")
+        //        .datum(function(d) { return {name: d.name, value: d.exports[d.exports.length - 1]}; })
+        //        .attr("transform", function(d) { return "translate(" + x(d.exports.year) + "," + y(d.exports.y0 + d.exports.y / 2) + ")"; })
+        //        .attr("x", -6)
+        //        .attr("dy", ".35em")
+        //        .text(function(d) { return d.name; });
           
-            svg.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xAxis);
+        //    svg.append("g")
+        //        .attr("class", "x axis")
+        //        .attr("transform", "translate(0," + height + ")")
+        //        .call(xAxis);
           
-            svg.append("g")
-                .attr("class", "y axis")
-                .call(yAxis);
+        //    svg.append("g")
+        //        .attr("class", "y axis")
+        //        .call(yAxis);
           });
   </script>
   
