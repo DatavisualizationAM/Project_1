@@ -83,7 +83,7 @@
               .values(function(d){return d.values;})
               .x(function(d){return d.anio;})
               .y(function(d){return d.expo;});
-          console.log(stack.values);
+          
           var nest = d3.nest()
               .key(function(d) { return d.area; });
           
@@ -102,7 +102,7 @@
           
           d3.csv("ExportsByCategory.csv", function(data) {
            
-           
+           console.log(nest.entries(data).values);
           console.log(nest.entries(data));
             var layers = stack(nest.entries(data));
             console.log(stack(nest.entries(data)));
