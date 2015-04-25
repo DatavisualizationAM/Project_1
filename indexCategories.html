@@ -56,17 +56,16 @@
          
           <div id="graph"></div>
             <script type="text/javascript">
+            var format=d3.time.format("%y");
             var width=1000;
             var height=600;
             var padding=50;
          // var parseDate = d3.time.format("%y").parse;
          
-          var xScale = d3.scale.linear()
-              .domain([2006,2014])
+          var xScale = d3.time.scale()
               .range([padding, width-padding]);
           
           var yScale = d3.scale.linear()
-              .domain([0,40000000])
               .range([height-padding, padding]);
           
           var color = d3.scale.category10();
@@ -107,7 +106,8 @@
           console.log(nest.entries(data));
             var layers = stack(nest.entries(data));
             console.log(stack(nest.entries(data)));
-            
+            xScale.domain(d3.extent(error,function(d){return d.anio;}));
+            yScale.domain([0,d3.max(error,function(d){return d.y0+d.y})]);
                 svg.selectAll(".layer")
                 .data(layers)
                 .enter()
