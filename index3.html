@@ -23,9 +23,6 @@
         shape-rendering: crispEdges;
       }
       
-      .good text {
-        text-anchor: end;
-      }
 </style>
   </head>
   <body>
@@ -82,63 +79,50 @@
               .scale(yScale)
               .orient("left");
           
-          var area = d3.svg.area()
-              .x(function(d) { return xScale(d.year); })
-              .y0(function(d) { return yScale(d.y0); })
-              .y1(function(d) { return yScale(d.y0 + d.y); });
-          
-          var stack = d3.layout.stack()
-              .values(function(d) { return d.exports; });
-          
-          var svg = d3.select("body").append("svg")
-              .attr("width", width)
-              .attr("height", height)
+         var stack=d3.layout.stack()
+              .offset("zero")
+              .values(function(d){return d.expo;})
+              .x(function(d){return d.year;})
+              .y(function(d){return d.expo;});
+              
+          var nest=d3.nest()
+              .key(function(d){return d.area;});
+              
+          var area=d3.svg.area()
+              .interpolate("cardinal")
+              .x(function(d){return xScale(d.year);})
+              .y0(function(d){return yScale(d.y0+d.y);});
+              
+          var svg=d3.select("body")
+              .append("svg")
+              .attr("width",width)
+              .attr("height",height)
               .append("g")
-              .attr("transform", "translate(" +padding + "," + padding + ")");
+              .attr("transform","translate("+padding+","+padding+")");
           
           d3.csv("ExportsByCategory.csv", function(data) {
-            //color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
-          console.log(data);
-            //data.forEach(function(d) {
-            //  d.year = parseDate(d.year);
-            //});
+           
           
-            var goods = stack(function(name) {
-              return {
-                name: name,
-                values: data.map(function(d) {
-                  return {date: d.year, y: d[name]};
-                })
-              };
-            });
           
-          console.log(goods);
-           var good = svg.selectAll(".good")
-                .data(goods)
-                .enter().append("g")
-                .attr("class", "good");
-          
-        //    good.append("path")
-        //        .attr("class", "area")
-        //        .attr("d", function(d) { return area(d.exports); })
-        //        .style("fill", function(d) { return color(d.name); });
-          
-        //    good.append("text")
-        //        .datum(function(d) { return {name: d.name, value: d.exports[d.exports.length - 1]}; })
-        //        .attr("transform", function(d) { return "translate(" + x(d.exports.year) + "," + y(d.exports.y0 + d.exports.y / 2) + ")"; })
-        //        .attr("x", -6)
-        //        .attr("dy", ".35em")
-        //        .text(function(d) { return d.name; });
-          
-            svg.append("g")
+            var layers = stack(nest.entries(data));
+            
+                svg.selectAll(.layer)
+                .data(layers)
+                .enter()
+                .append("path")
+                .attr("class","layer")
+                .attr("d",function(d){return area(d.expo);})
+                .style("fill",function(d){return color(i);});
+                
+                svg.append("g")
                 .attr("class", "x axis")
                 .attr("transform", "translate(-20,500 )")
                 .call(xAxis);
-          
-            svg.append("g")
-                .attr("class", "y axis")
-                .attr("transform", "translate(30,-50 )")
-                .call(yAxis);
+                
+                  svg.append("g")
+                  .attr("class", "y axis")
+                  .attr("transform", "translate(30,-50 )")
+                  .call(yAxis);
           });
   </script>
   
