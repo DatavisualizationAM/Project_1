@@ -118,8 +118,12 @@
               .data(myTreemap.value(myValue))
               .transition()
               .duration(300)
-              .attr("x", function(d){return d.x+d.dx/2-50;})
+              .attr("x", function(d){return d.x+d.dx/2-47;})
               .attr("y", function(d){return d.y+d.dy/2+5+height/2;})
+            //Update titles
+            mySvg.selectAll(".hovertexttreemap")
+              .data(myTreemap.value(myValue))
+              .text(function(d){return "Category: "+d.key+"\n"+"Expots (USD millions):"+Math.round(d.value/1000);})
           })
           .append("title").text(function(d){return Math.round(d.values.exports/1000);});
         //Create values text for barchart
@@ -172,14 +176,15 @@
             .attr("stroke", "white")
             .attr("class","treemaprect")
             .attr("fill", function(d){return d.children? "white": color(d.parent.value);})
-            .append("title").text(function(d){return "Category: "+d.key+"\n"+"Expots (USD millions) :"+Math.round(d.value/1000)/1000;})
+            .append("title").text(function(d){return "Category: "+d.key+"\n"+"Expots (USD millions):"+Math.round(d.value/1000);})
+            .attr("class","hovertexttreemap");
 
         //Create text
         mySvg.selectAll("#treemaptext")
           .data(myTreemap.nodes(nest[0]))
           .enter()
           .append("text")
-            .attr("x", function(d){return d.x+d.dx/2-50;})
+            .attr("x", function(d){return d.x+d.dx/2-47;})
             .attr("y", function(d){return d.y+d.dy/2+5+height/2;})
             .attr("fill", "black")
             .attr("style","font-size:20px")
