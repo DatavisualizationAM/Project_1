@@ -3,7 +3,10 @@
 	font-family:Garamond;
 }
 rect:hover {
-	fill: cyan;
+	fill: #FFCC99;
+}
+.treemaptext, .bartext{
+font-weight:bold;
 }
 #myheader{
 	height: 120px;

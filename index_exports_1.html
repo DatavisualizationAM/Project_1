@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -58,7 +57,7 @@
     <script>
       width=650;
       height=800;
-      var color = d3.scale.category10();
+      var color = d3.scale.category20();
 
       //Create svg
       var mySvg= d3.select("#participants").append("svg")
@@ -76,14 +75,14 @@
       var year=8;
       //Read dataser 
       d3.csv("datasets/goods.csv", function(data) {
-        //Create linechart
+        //Create dataset for barchart
         var nestYear=d3.nest()
                     .key(function(d){return "Grandpa";})
                     .key(function(d){return d.anio;})
                     .rollup(function(d){return {
                       exports: d3.sum(d,function(d){return d.expo;})}})
                     .entries(data);
-
+        //Create bars
         mySvg.selectAll("#barchartrect")
           .data(nestYear[0].values)
           .enter()
@@ -94,7 +93,7 @@
           .attr("height", function(d){return height/2*(d.values.exports/55000000);})
           .attr("stroke", "white")
           .attr("class","barchart")
-          .attr("fill","blue")
+          .attr("fill","#336699")
           .on("mouseover", function(d,i){
             var myValue = i=== 0? function(d) { return d.values.y2006;}:
               i === 1? function(d) { return d.values.y2007;}:
@@ -115,7 +114,7 @@
               .attr("width", function(d){return d.dx;})
               .attr("height", function(d){return d.dy;});
             //Update text
-            mySvg.selectAll("text")
+            mySvg.selectAll(".treemaptext")
               .data(myTreemap.value(myValue))
               .transition()
               .duration(500)
@@ -123,9 +122,28 @@
               .attr("y", function(d){return d.y+d.dy/2+5+height/2;})
           })
           .append("title").text(function(d){return Math.round(d.values.exports/1000);});
+        //Create values text for barchart
+        mySvg.selectAll("#barcharrvalues") 
+          .data(nestYear[0].values)
+          .enter()
+          .append("text")
+          .attr("x", function(d,i){ return (0.25+i)*width/nestYear[0].values.length;})
+          .attr("y", function(d){return height/2*(1-d.values.exports/65000000)-3;})
+          .attr("class","bartext")
+          .text(function(d){return Math.round(d.values.exports/1000)/1000;});
+        //Create years text for barchart
+        mySvg.selectAll("#barcharrvalues") 
+          .data(nestYear[0].values)
+          .enter()
+          .append("text")
+          .attr("x", function(d,i){ return (0.3+i)*width/nestYear[0].values.length;})
+          .attr("y", function(d){return height/2-5;})
+          .attr("class","bartext")
+          .attr("fill", "white")
+          .text(function(d,i){return 2006+i;});
+          
 
-
-        //Nest dataser
+        //Nest dataser for treemap
         var nest=d3.nest()
                     .key(function(d){return "Grandpa";})
                     .key(function(d){return d.area;})
@@ -157,7 +175,7 @@
             .append("title").text(function(d){return "Category: "+d.key+"\n"+"Expots :"+Math.round(d.value/1000);})
 
         //Create text
-        mySvg.selectAll("text")
+        mySvg.selectAll("#treemaptext")
           .data(myTreemap.nodes(nest[0]))
           .enter()
           .append("text")
@@ -165,6 +183,7 @@
             .attr("y", function(d){return d.y+d.dy/2+5+height/2;})
             .attr("fill", "black")
             .attr("style","font-size:20px")
+            .attr("class","treemaptext")
             .text(function(d){return !d.children? null : d.parent? d.key: null;});
       });
     </script>
