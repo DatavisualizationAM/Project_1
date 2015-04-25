@@ -103,16 +103,16 @@
             //  d.year = parseDate(d.year);
             //});
           
-          //  var goods = stack(color.domain().map(function(name) {
-          //    return {
-          //      name: name,
-          //      values: data.map(function(d) {
-          //        return {date: d.year, y: d[name]};
-          //      })
-          //    };
-          //  }));
+            var goods = stack(color.domain().map(function(name) {
+              return {
+                name: name,
+                values: data.map(function(d) {
+                  return {date: d.year, y: d[name]};
+                })
+              };
+            }));
           
-          
+          console.log(goods);
         //    var good = svg.selectAll(".good")
         //        .data(goods)
         //        .enter().append("g")
