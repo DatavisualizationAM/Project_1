@@ -100,11 +100,11 @@
           d3.csv("ExportsByCategory.csv", function(data) {
            
            var nest=d3.nest()
-              .key(function(d){return "rootNode";})
               .key(function(d){return d.area;})
               .entries(data);
           console.log(nest);
             var layers = stack(nest);
+            console.log(layers);
             
                 svg.selectAll(".layer")
                 .data(layers)
