@@ -70,7 +70,7 @@
           
           var yScale = d3.scale.linear()
               .domain([0,40000000])
-              .range([height-padding, 0]);
+              .range([height-padding, padding]);
           
           var color = d3.scale.category10();
           
@@ -132,7 +132,7 @@
           
             svg.append("g")
                 .attr("class", "x axis")
-                .attr("transform", "translate(20,550 )")
+                .attr("transform", "translate(-20,500 )")
                 .call(xAxis);
           
             svg.append("g")
