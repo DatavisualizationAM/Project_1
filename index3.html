@@ -81,7 +81,7 @@
          var stack=d3.layout.stack()
               .offset("zero")
               .values(function(d){return d.values;})
-              .x(function(d){return d.year;})
+              .x(function(d){return d.anio;})
               .y(function(d){return d.expo;});
           
           var nest = d3.nest()
@@ -89,7 +89,7 @@
           
           var area=d3.svg.area()
               .interpolate("cardinal")
-              .x(function(d){return xScale(d.year);})
+              .x(function(d){return xScale(d.anio);})
               .y0(function(d) { return yScale(d.y0); })
               .y1(function(d) { return yScale(d.y0 + d.y); });
               
@@ -104,14 +104,14 @@
             
             console.log(data);
             data.forEach(function(d) {
-              d.year = format.parse(String(d.year));
+              d.anio = format.parse(String(d.anio));
               d.expo = +d.expo;
             });
            
           console.log(nest.entries(data));
             var layers = stack(nest.entries(data));
             console.log(stack(nest.entries(data)));
-            xScale.domain(d3.extent(data, function(d) { return d.year; }));
+            xScale.domain(d3.extent(data, function(d) { return d.anio; }));
             yScale.domain([0, d3.max(data, function(d) { return d.y0 + d.y; })]);
             
                 svg.selectAll(".layer")
