@@ -92,8 +92,7 @@
               .interpolate("cardinal")
               .x(function(d){return xScale(d.year);})
               .y0(function(d) { return yScale(d.y0); })
-              .y1(function(d) { return yScale(d.y0 + d.y); })
-              .values(function(d){return d.expo;});
+              .y1(function(d) { return yScale(d.y0 + d.y); });
               
           var svg=d3.select("body")
               .append("svg")
@@ -106,11 +105,11 @@
            
            
           
-            //var layers = stack(nest.entries(data));
-            //console.log(layers);
+            var layers = stack(nest.entries(data));
+            console.log(layers);
             
                 svg.selectAll(".layer")
-                .data(nest.entries(data))
+                .data(layers)
                 .enter()
                 .append("path")
                 .attr("class","layer")
