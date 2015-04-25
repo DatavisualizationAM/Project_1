@@ -102,7 +102,7 @@
           
           d3.csv("ExportsByCategory.csv", function(data) {
             
-            console.log(data);
+            console.log(data.year);
             data.forEach(function(d) {
               d.year = format.parse(String(d.year));
               d.expo = +d.expo;
