@@ -172,7 +172,7 @@
             .attr("stroke", "white")
             .attr("class","treemaprect")
             .attr("fill", function(d){return d.children? "white": color(d.parent.value);})
-            .append("title").text(function(d){return "Category: "+d.key+"\n"+"Expots :"+Math.round(d.value/1000);})
+            .append("title").text(function(d){return "Category: "+d.key+"\n"+"Expots (USD millions) :"+Math.round(d.value/1000)/1000;})
 
         //Create text
         mySvg.selectAll("#treemaptext")
