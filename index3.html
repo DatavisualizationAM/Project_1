@@ -86,6 +86,7 @@
               .y(function(d){return d.expo;});
               
           var nest=d3.nest()
+              .key(function(d){return "rootNode";})
               .key(function(d){return d.area;});
               
           var area=d3.svg.area()
