@@ -102,7 +102,7 @@
           
           d3.csv("Libro5.csv", function(data) {
             
-            console.log(data);
+            console.log(data[8].anio);
             data.forEach(function(d) {
               d.anio = format.parse(String(d.anio));
               d.expo = +d.expo;
