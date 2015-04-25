@@ -84,11 +84,7 @@
               .values(function(d){return d.expo;})
               .x(function(d){return d.year;})
               .y(function(d){return d.expo;});
-              
-          var nest=d3.nest()
-              .key(function(d){return "rootNode";})
-              .key(function(d){return d.area;});
-              
+          
           var area=d3.svg.area()
               .interpolate("cardinal")
               .x(function(d){return xScale(d.year);})
@@ -103,8 +99,11 @@
           
           d3.csv("ExportsByCategory.csv", function(data) {
            
-          
-          console.log(nest.entries(data));
+           var nest=d3.nest()
+              .key(function(d){return "rootNode";})
+              .key(function(d){return d.area;})
+              .entries(data);
+          console.log(nest);
             var layers = stack(nest.entries(data));
             
                 svg.selectAll(".layer")
