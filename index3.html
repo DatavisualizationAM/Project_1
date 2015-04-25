@@ -32,13 +32,9 @@
       <!--Body-->
       <!--Data base-->
       <div id="visualizations">
-         <h2><a name="visualization2">Monthly Total Exports from Colombia to other Countries</a></h2>
-          <ul style="text-align:left;"><a name="description" >The subsequent visualisations show the exports from Colombia to the different country groups it trades with. Here, the values of exports are in thousands of dollars. This groups are formed as follows:</a>
-            <li style="text-align:left;">NAFTA: Canada, United States and Mexico</li>
-            <li style="text-align:left;">CAN: Bolivia, Peru and Equador</li>
-            <li style="text-align:left;">Mercosur: Argentina, Paraguay, Uruguay, Brazil and Venezuela</li>
-          </ul>
-          <p>From the subsequent graphs it can be seen that Colombia's most important export partners are the members of the NAFTA group as the receive the majority of the exports. It can also be concluded that exports to countries like Panama, India and China had been relatively constant up until mid 2010 where they began to show a more unstable behavior. Overall, most countries present a growth in imports from Colombia, but also show a decrease from mid 2014 until 2015 (perhaps due to oil price fall).</p>
+         <h2><a name="visualization2">Anual Colombian Exports By Type of goods  </a></h2>
+          <p style="text-align:left;"><a name="description" >The subsequent visualisations show the total Colombian exports divided by the type of the goods exported </a></p>
+          <p>Conclusions</p>
       </div>
       <div  id="visualizations">
     
@@ -50,558 +46,83 @@
             var width=1200;
             var height=400;
             var padding=90;
-            var labels=new Array();
-            
-            var color=d3.scale.category10();
-            var div1=d3.select("body").append("div")
-              .attr("class","label")
-              .style("fill","black")
-              .style("position","relative")
-              .style("height","15px")
-              .style("width","30px")
-              .style("opacity", .9);
-            
-              d3.csv("countries.csv",function(data){
-                
-                
-               for(var i=0 ; i<data.length;i++){
-                  labels[i]=data[i].Month;
-                }
-                
-             
-                var svg1=d3.selectAll("#graph")
-                  .append("svg")
-                  .attr("width",width)
-                  .attr("height",height)
-                  .style("background","ghostwhite"); 
-                var svg2=d3.selectAll("#graph")
-                  .append("svg")
-                  .attr("width",width)
-                  .attr("height",height)
-                  .style("background","ghostwhite"); 
-                  var svg3=d3.selectAll("#graph")
-                  .append("svg")
-                  .attr("width",width)
-                  .attr("height",height)
-                  .style("background","ghostwhite"); 
-                  var svg4=d3.selectAll("#graph")
-                  .append("svg")
-                  .attr("width",width)
-                  .attr("height",height)
-                  .style("background","ghostwhite"); 
-                  var svg5=d3.selectAll("#graph")
-                  .append("svg")
-                  .attr("width",width)
-                  .attr("height",height)
-                  .style("background","ghostwhite"); 
-                  var svg6=d3.selectAll("#graph")
-                  .append("svg")
-                  .attr("width",width)
-                  .attr("height",height)
-                  .style("background","ghostwhite"); 
-                  var svg7=d3.selectAll("#graph")
-                  .append("svg")
-                  .attr("width",width)
-                  .attr("height",height)
-                  .style("background","ghostwhite"); 
-                  var svg8=d3.selectAll("#graph")
-                  .append("svg")
-                  .attr("width",width)
-                  .attr("height",height)
-                  .style("background","ghostwhite"); 
-                  var svg9=d3.selectAll("#graph")
-                  .append("svg")
-                  .attr("width",width)
-                  .attr("height",height)
-                  .style("background","ghostwhite"); 
-                var xScale=d3.scale.ordinal()
-                    .domain(labels)
-                    .rangePoints([padding,width-5]);
-                var yScale=d3.scale.linear()
-                    .domain([400,2500000])
-                    .range([height-padding,padding]);
-                    
-                 svg1.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate(0,"+(height-padding)+")")
-                    .call(d3.svg.axis()
-                    .scale(xScale)
-                    .orient("bottom")
-                    .ticks(10))
-                    .selectAll("text")
-                    .attr("transform", "translate(10,7) rotate(90)")
-                    .style("text-anchor", "start")
-                    .attr("fill","black");
-                  svg1.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate("+padding+",0)")
-                    .call(d3.svg.axis()
-                    .scale(yScale)
-                    .orient("left")
-                    .ticks(10));
-                 svg1.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",15)
-                    .attr("x",-100)
-                    .attr("transform","rotate(-90)")
-                    .text("Exports in Thousand Dollars")
-                    .style("fill","black");
-                  svg1.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",385)
-                    .attr("x",620)
-                    .text("Month")
-                    .style("fill","black");   
-                  svg1.append("text")
-                    .attr("class","title")
-                    .attr("text-anchor","end")
-                    .attr("y",90)
-                    .attr("x",950)
-                    .text("Exports to NAFTA Countries")
-                    .style("fill","black");  
-                  
-                  svg1.selectAll("#circle")
-                    .data(data)
-                    .enter()
-                    .append("circle")
-                    .attr("cx", function(d){return +xScale(d.Month);})
-                    .attr("cy", function(d){return +yScale(d.NAFTA);})
-                    .attr("r", 3)
-                    .attr("fill", "white")
-                    .attr("stroke", "#1e90ff")
-                    .attr("stroke-width", "1.5px");
-                   
-                    
-                    
-                    svg2.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate(0,"+(height-padding)+")")
-                    .call(d3.svg.axis()
-                    .scale(xScale)
-                    .orient("bottom")
-                    .ticks(10))
-                    .selectAll("text")
-                    .attr("transform", "translate(10,7) rotate(90)")
-                    .style("text-anchor", "start")
-                    .attr("fill","black");
-                  svg2.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate("+padding+",0)")
-                    .call(d3.svg.axis()
-                    .scale(yScale)
-                    .orient("left")
-                    .ticks(10));
-                 svg2.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",15)
-                    .attr("x",-100)
-                    .attr("transform","rotate(-90)")
-                    .text("Exports in Thousand Dollars")
-                    .style("fill","black");
-                  svg2.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",385)
-                    .attr("x",620)
-                    .text("Month")
-                    .style("fill","black");  
-                  svg2.append("text")
-                    .attr("class","title")
-                    .attr("text-anchor","end")
-                    .attr("y",90)
-                    .attr("x",950)
-                    .text("Exports to Mercosur Countries")
-                    .style("fill","black");  
-                    svg2.selectAll("#circle")
-                    .data(data)
-                    .enter()
-                    .append("circle")
-                    .attr("cx", function(d){return +xScale(d.Month);})
-                    .attr("cy", function(d){return+yScale(d.Mercosur);})
-                    .attr("r", 3)
-                    .attr("fill", "white")
-                    .attr("stroke", "#008080")
-                    .attr("stroke-width", "1.5px");
-                    
-                  svg3.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate(0,"+(height-padding)+")")
-                    .call(d3.svg.axis()
-                    .scale(xScale)
-                    .orient("bottom")
-                    .ticks(10))
-                    .selectAll("text")
-                    .attr("transform", "translate(10,7) rotate(90)")
-                    .style("text-anchor", "start")
-                    .attr("fill","black");
-                  svg3.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate("+padding+",0)")
-                    .call(d3.svg.axis()
-                    .scale(yScale)
-                    .orient("left")
-                    .ticks(10));
-                 svg3.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",15)
-                    .attr("x",-100)
-                    .attr("transform","rotate(-90)")
-                    .text("Exports in Thousand Dollars")
-                    .style("fill","black");
-                  svg3.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",385)
-                    .attr("x",620)
-                    .text("Month")
-                    .style("fill","black");  
-                  svg3.append("text")
-                    .attr("class","title")
-                    .attr("text-anchor","end")
-                    .attr("y",90)
-                    .attr("x",950)
-                    .text("Exports to CAN Countries")
-                    .style("fill","black");  
-                    svg3.selectAll("#circle")
-                    .data(data)
-                    .enter()
-                    .append("circle")
-                    .attr("cx", function(d){return +xScale(d.Month);})
-                    .attr("cy", function(d){return +yScale(d.CAN);})
-                    .attr("r", 3)
-                    .attr("fill", "white")
-                    .attr("stroke", "#800080")
-                    .attr("stroke-width", "1.5px");
-                    
-                  svg4.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate(0,"+(height-padding)+")")
-                    .call(d3.svg.axis()
-                    .scale(xScale)
-                    .orient("bottom")
-                    .ticks(10))
-                    .selectAll("text")
-                    .attr("transform", "translate(10,7) rotate(90)")
-                    .style("text-anchor", "start")
-                    .attr("fill","black");
-                  svg4.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate("+padding+",0)")
-                    .call(d3.svg.axis()
-                    .scale(yScale)
-                    .orient("left")
-                    .ticks(10));
-                 svg4.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",15)
-                    .attr("x",-100)
-                    .attr("transform","rotate(-90)")
-                    .text("Exports in Thousand Dollars")
-                    .style("fill","black");
-                  svg4.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",385)
-                    .attr("x",620)
-                    .text("Month")
-                    .style("fill","black");
-                  svg4.append("text")
-                    .attr("class","title")
-                    .attr("text-anchor","end")
-                    .attr("y",90)
-                    .attr("x",950)
-                    .text("Exports to China")
-                    .style("fill","black");
-                    svg4.selectAll("#circle")
-                    .data(data)
-                    .enter()
-                    .append("circle")
-                    .attr("cx", function(d){return +xScale(d.Month);})
-                    .attr("cy", function(d){return +yScale(d.China);})
-                    .attr("r", 3)
-                    .attr("fill", "white")
-                    .attr("stroke", "#f4b400")
-                    .attr("stroke-width", "1.5px");
-                    
-                  svg5.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate(0,"+(height-padding)+")")
-                    .call(d3.svg.axis()
-                    .scale(xScale)
-                    .orient("bottom")
-                    .ticks(10))
-                    .selectAll("text")
-                    .attr("transform", "translate(10,7) rotate(90)")
-                    .style("text-anchor", "start")
-                    .attr("fill","black");
-                  svg5.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate("+padding+",0)")
-                    .call(d3.svg.axis()
-                    .scale(yScale)
-                    .orient("left")
-                    .ticks(10));
-                 svg5.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",15)
-                    .attr("x",-100)
-                    .attr("transform","rotate(-90)")
-                    .text("Exports in Thousand Dollars")
-                    .style("fill","black");
-                  svg5.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",385)
-                    .attr("x",620)
-                    .text("Month")
-                    .style("fill","black"); 
-                  svg5.append("text")
-                    .attr("class","title")
-                    .attr("text-anchor","end")
-                    .attr("y",90)
-                    .attr("x",950)
-                    .text("Exports to Japan")
-                    .style("fill","black");  
-                    svg5.selectAll("#circle")
-                    .data(data)
-                    .enter()
-                    .append("circle")
-                    .attr("cx", function(d){return +xScale(d.Month);})
-                    .attr("cy", function(d){return +yScale(d.Japan);})
-                    .attr("r", 3)
-                    .attr("fill", "white")
-                    .attr("stroke", "#008000")
-                    .attr("stroke-width", "1.5px");
-                    
-                svg6.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate(0,"+(height-padding)+")")
-                    .call(d3.svg.axis()
-                    .scale(xScale)
-                    .orient("bottom")
-                    .ticks(10))
-                    .selectAll("text")
-                    .attr("transform", "translate(10,7) rotate(90)")
-                    .style("text-anchor", "start")
-                    .attr("fill","black");
-                  svg6.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate("+padding+",0)")
-                    .call(d3.svg.axis()
-                    .scale(yScale)
-                    .orient("left")
-                    .ticks(10));
-                 svg6.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",15)
-                    .attr("x",-100)
-                    .attr("transform","rotate(-90)")
-                    .text("Exports in Thousand Dollars")
-                    .style("fill","black");
-                  svg6.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",385)
-                    .attr("x",620)
-                    .text("Month")
-                    .style("fill","black"); 
-                  svg6.append("text")
-                    .attr("class","title")
-                    .attr("text-anchor","end")
-                    .attr("y",90)
-                    .attr("x",950)
-                    .text("Exports to India")
-                    .style("fill","black");  
-                    svg6.selectAll("#circle")
-                    .data(data)
-                    .enter()
-                    .append("circle")
-                    .attr("cx", function(d){return +xScale(d.Month);})
-                    .attr("cy", function(d){return +yScale(d.India);})
-                    .attr("r", 3)
-                    .attr("fill", "white")
-                    .attr("stroke", " #0000ff")
-                    .attr("stroke-width", "1.5px");
-                   
-                  svg7.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate(0,"+(height-padding)+")")
-                    .call(d3.svg.axis()
-                    .scale(xScale)
-                    .orient("bottom")
-                    .ticks(10))
-                    .selectAll("text")
-                    .attr("transform", "translate(10,7) rotate(90)")
-                    .style("text-anchor", "start")
-                    .attr("fill","black");
-                  svg7.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate("+padding+",0)")
-                    .call(d3.svg.axis()
-                    .scale(yScale)
-                    .orient("left")
-                    .ticks(10));
-                 svg7.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",15)
-                    .attr("x",-100)
-                    .attr("transform","rotate(-90)")
-                    .text("Exports in Thousand Dollars")
-                    .style("fill","black");
-                  svg7.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",385)
-                    .attr("x",620)
-                    .text("Month")
-                    .style("fill","black"); 
-                  svg7.append("text")
-                    .attr("class","title")
-                    .attr("text-anchor","end")
-                    .attr("y",90)
-                    .attr("x",950)
-                    .text("Exports to Panama")
-                    .style("fill","black");  
-                   svg7.selectAll("#circle")
-                    .data(data)
-                    .enter()
-                    .append("circle")
-                    .attr("cx", function(d){return +xScale(d.Month);})
-                    .attr("cy", function(d){return +yScale(d.Panama);})
-                    .attr("r", 3)
-                    .attr("fill", "white")
-                    .attr("stroke", " #ff0000")
-                    .attr("stroke-width", "1.5px"); 
-                  
-                  svg8.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate(0,"+(height-padding)+")")
-                    .call(d3.svg.axis()
-                    .scale(xScale)
-                    .orient("bottom")
-                    .ticks(10))
-                    .selectAll("text")
-                    .attr("transform", "translate(10,7) rotate(90)")
-                    .style("text-anchor", "start")
-                    .attr("fill","black");
-                  svg8.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate("+padding+",0)")
-                    .call(d3.svg.axis()
-                    .scale(yScale)
-                    .orient("left")
-                    .ticks(10));
-                 svg8.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",15)
-                    .attr("x",-100)
-                    .attr("transform","rotate(-90)")
-                    .text("Exports in Thousand Dollars")
-                    .style("fill","black");
-                  svg8.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",385)
-                    .attr("x",620)
-                    .text("Month")
-                    .style("fill","black"); 
-                  svg8.append("text")
-                    .attr("class","title")
-                    .attr("text-anchor","end")
-                    .attr("y",90)
-                    .attr("x",950)
-                    .text("Exports to European Union Countries")
-                    .style("fill","black");  
-                  svg8.selectAll("#circle")
-                    .data(data)
-                    .enter()
-                    .append("circle")
-                    .attr("cx", function(d){return +xScale(d.Month);})
-                    .attr("cy", function(d){return +yScale(d.EuropeanUnion);})
-                    .attr("r", 3)
-                    .attr("fill", "white")
-                    .attr("stroke", "#838e91")
-                    .attr("stroke-width", "1.5px");
-
-                  svg9.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate(0,"+(height-padding)+")")
-                    .call(d3.svg.axis()
-                    .scale(xScale)
-                    .orient("bottom")
-                    .ticks(10))
-                    .selectAll("text")
-                    .attr("transform", "translate(10,7) rotate(90)")
-                    .style("text-anchor", "start")
-                    .attr("fill","black");
-                  svg9.append("g")
-                    .attr("class","axis")
-                    .attr("transform","translate("+padding+",0)")
-                    .call(d3.svg.axis()
-                    .scale(yScale)
-                    .orient("left")
-                    .ticks(10));
-                 svg9.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",15)
-                    .attr("x",-100)
-                    .attr("transform","rotate(-90)")
-                    .text("Exports in Thousand Dollars")
-                    .style("fill","black");
-                  svg9.append("text")
-                    .attr("class","name")
-                    .attr("text-anchor","end")
-                    .attr("y",385)
-                    .attr("x",620)
-                    .text("Month")
-                    .style("fill","black");  
-                  svg9.append("text")
-                    .attr("class","title")
-                    .attr("text-anchor","end")
-                    .attr("y",90)
-                    .attr("x",950)
-                    .text("Exports to Other Countries")
-                    .style("fill","black");  
-                   svg9.selectAll("#circle")
-                    .data(data)
-                    .enter()
-                    .append("circle")
-                    .attr("cx", function(d){return +xScale(d.Month);})
-                    .attr("cy", function(d){return+yScale(d.Others);})
-                    .attr("r", 3)
-                    .attr("fill", "white")
-                    .attr("stroke", "#582130")
-                    .attr("stroke-width", "1.5px");
-                    
-                
-              });
-            </script>  
+          var parseDate = d3.time.format("%y").parse,
+         
+          var xScale = d3.time.scale()
+              .range([0, width]);
           
+          var yScale = d3.scale.linear()
+              domain([0,40000000])
+              .range([height, 0]);
           
-        </div>
-        
-      </div>
-    </div>
-   
-
-  <!--Google Analytics-->
- <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-60205051-2', 'auto');
-    ga('send', 'pageview');
+          var color = d3.scale.category10();
+          
+          var xAxis = d3.svg.axis()
+              .scale(x)
+              .orient("bottom");
+          
+          var yAxis = d3.svg.axis()
+              .scale(y)
+              .orient("left");
+          
+          var area = d3.svg.area()
+              .x(function(d) { return x(d.year); })
+              .y0(function(d) { return y(d.y0); })
+              .y1(function(d) { return y(d.y0 + d.y); });
+          
+          var stack = d3.layout.stack()
+              .values(function(d) { return d.values; });
+          
+          var svg = d3.select("body").append("svg")
+              .attr("width", width)
+              .attr("height", height)
+            .append("g")
+              .attr("transform", "translate(" +padding + "," + padding + ")");
+          
+          d3.tsv("Exports by goods.csv", function(data) {
+            color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
+          
+            data.forEach(function(d) {
+              d.year = parseDate(d.year);
+            });
+          
+            var goods = stack(color.domain().map(function(name) {
+              return {
+                name: name,
+                values: data.map(function(d) {
+                  return {date: d.year, y: d[name]};
+                })
+              };
+            }));
+          
+            x.domain(d3.extent(data, function(d) { return d.date; }));
+          
+            var good = svg.selectAll(".good")
+                .data(goods)
+                .enter().append("g")
+                .attr("class", "goos");
+          
+            good.append("path")
+                .attr("class", "area")
+                .attr("d", function(d) { return area(d.values); })
+                .style("fill", function(d) { return color(d.name); });
+          
+            browser.append("text")
+                .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
+                .attr("transform", function(d) { return "translate(" + x(d.value.year) + "," + y(d.value.y0 + d.value.y / 2) + ")"; })
+                .attr("x", -6)
+                .attr("dy", ".35em")
+                .text(function(d) { return d.name; });
+          
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis);
+          
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis);
+          });
   </script>
   
   <div class="fb-comments" data-href="http://datavisualizationam.github.io/Project_1/index3.html" data-width="1200" data-numposts="5" data-colorscheme="light" s></div>
