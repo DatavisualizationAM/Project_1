@@ -95,7 +95,7 @@
             .append("g")
               .attr("transform", "translate(" +padding + "," + padding + ")");
           
-          d3.tsv("ExportsByCategory.csv", function(data) {
+          d3.csv("ExportsByCategory.csv", function(data) {
             color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
           console.log(data);
             data.forEach(function(d) {
