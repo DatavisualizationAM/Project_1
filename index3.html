@@ -100,12 +100,9 @@
               .append("g")
               .attr("transform","translate("+padding+","+padding+")");
           
-          d3.csv("ExportsByCategory.csv", function(error,data) {
-            if(error){
-              console.log(error);
-            }
-            else{
+          d3.csv("ExportsByCategory.csv", function(data) {
             
+            console.log(data);
             data.forEach(function(d) {
               d.anio = format.parse(String(d.anio));
               d.expo = +d.expo;
@@ -134,7 +131,7 @@
                   .attr("class", "y axis")
                   .attr("transform", "translate(30,-50 )")
                   .call(yAxis);
-         } });
+         });
   </script>
   
 <!--  <div class="fb-comments" data-href="http://datavisualizationam.github.io/Project_1/index3.html" data-width="1200" data-numposts="5" data-colorscheme="light" s></div>
