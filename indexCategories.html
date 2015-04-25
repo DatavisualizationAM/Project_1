@@ -63,9 +63,11 @@
          // var parseDate = d3.time.format("%y").parse;
          
           var xScale = d3.time.scale()
+              .domain([2006,2014])
               .range([padding, width-padding]);
           
           var yScale = d3.scale.linear()
+              .domain([0,45000000])
               .range([height-padding, padding]);
           
           var color = d3.scale.category10();
@@ -106,8 +108,8 @@
           console.log(nest.entries(data));
             var layers = stack(nest.entries(data));
             console.log(layers[1].values);
-            xScale.domain(d3.extent(function(d){return d.anio;}));
-            yScale.domain([0,d3.max(function(d){return d.y0+d.y})]);
+            //xScale.domain(d3.extent(function(d){return d.anio;}));
+            //yScale.domain([0,d3.max(function(d){return d.y0+d.y})]);
                 svg.selectAll(".layer")
                 .data(layers)
                 .enter()
