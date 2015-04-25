@@ -104,11 +104,11 @@
            
            
           
-            var layers = stack(nest.entries(data));
-            console.log(layers);
+            //var layers = stack(nest.entries(data));
+            //console.log(layers);
             
                 svg.selectAll(".layer")
-                .data(layers)
+                .data(nest.entries(data))
                 .enter()
                 .append("path")
                 .attr("class","layer")
