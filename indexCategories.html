@@ -70,7 +70,7 @@
               .domain([0,40000000])
               .range([height-padding, padding]);
           
-          var color = d3.scale.category10();
+          var color = d3.scale.category20();
           
           var xAxis = d3.svg.axis()
               .scale(xScale)
@@ -93,7 +93,7 @@
               .interpolate("cardinal")
               .x(function(d){return xScale(d.anio);})
               .y0(function(d) { return yScale(d.y0); })
-              .y1(function(d) { return yScale(d.y0 + d.expo); });
+              .y1(function(d) { return yScale(d.y0 + d.y); });
               
           var svg=d3.select("body")
               .append("svg")
@@ -117,7 +117,7 @@
                 .attr("class","layer")
                 .attr("d",function(d){return area(d.values);})
                 .attr("transform",function(d){return"translate("+(padding-20)+","+(-padding)+")";})
-                .style("fill",function(d,i){return color(i);});
+                .style("fill",function(d,i){return color(i*2);});
                 
                 svg.append("g")
                 .attr("class", "x axis")
