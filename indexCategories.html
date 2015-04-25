@@ -26,14 +26,14 @@
 </style>
   </head>
   <body>
-    <!--<div id="fb-root"></div>
+    <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
       js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3";
       fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>-->
+    }(document, 'script', 'facebook-jssdk'));</script>
     <!--Header-->
       <a href="index.html">
      <div id="myheader" style="width: 1450px">
@@ -95,7 +95,7 @@
               .y0(function(d) { return yScale(d.y0); })
               .y1(function(d) { return yScale(d.y0 + d.y); });
               
-          var svg=d3.select("body")
+          var svg=d3.select("#graph")
               .append("svg")
               .attr("width",width)
               .attr("height",height)
@@ -131,7 +131,7 @@
           });
   </script>
   
-<!--  <div class="fb-comments" data-href="http://datavisualizationam.github.io/Project_1/index3.html" data-width="1200" data-numposts="5" data-colorscheme="light" s></div>
+<<div class="fb-comments" data-href="http://datavisualizationam.github.io/Project_1/index3.html" data-width="1200" data-numposts="5" data-colorscheme="light" s></div>
   
 <div id="disqus_thread"></div>
 <script type="text/javascript">
@@ -144,6 +144,6 @@
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>-->
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </body>
 </html>
