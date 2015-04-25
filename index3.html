@@ -97,7 +97,7 @@
           
           d3.tsv("Exports by goods.csv", function(data) {
             color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
-          
+          console.log(data);
             data.forEach(function(d) {
               d.year = parseDate(d.year);
             });
