@@ -106,8 +106,8 @@
           console.log(nest.entries(data));
             var layers = stack(nest.entries(data));
             console.log(stack(nest.entries(data)));
-            xScale.domain(d3.extent(error,function(d){return d.anio;}));
-            yScale.domain([0,d3.max(error,function(d){return d.y0+d.y})]);
+            xScale.domain(d3.extent(function(d){return d.anio;}));
+            yScale.domain([0,d3.max(function(d){return d.y0+d.y})]);
                 svg.selectAll(".layer")
                 .data(layers)
                 .enter()
