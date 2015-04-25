@@ -3,10 +3,14 @@
 	font-family:Garamond;
 }
 rect:hover {
-	fill: #FFCC99;
+	fill: #FFFF66;
 }
-.treemaptext, .bartext{
+.bartext{
 font-weight:bold;
+}
+.svgtitle{
+	font-weight:bold;
+	font-size: 130%;
 }
 #myheader{
 	height: 120px;

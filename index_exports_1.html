@@ -57,13 +57,28 @@
     <script>
       width=650;
       height=800;
-      var color = d3.scale.category20();
+      extra=0.1*height;
+      var color = d3.scale.category20c();
 
       //Create svg
       var mySvg= d3.select("#participants").append("svg")
             .attr("width", width)
-            .attr("height", height);
+            .attr("height", height+2*extra);
 
+      //Add titles to the svg
+      mySvg.append("text")
+        .attr("x",width/2)
+        .attr("y",extra)
+        .attr("text-anchor","middle")
+        .attr("class","svgtitle")
+        .text("Colombian exports by year")
+
+      mySvg.append("text")
+        .attr("x",width/2)
+        .attr("y",extra*1.8+height/2)
+        .attr("text-anchor","middle")
+        .attr("class","svgtitle treemaptitle")
+        .text("Exports composition (2006)")
       //Create treemap layout
       var myTreemap= d3.layout.treemap()
         .size([width,(height-20)/2])
@@ -88,12 +103,12 @@
           .enter()
           .append("rect")
           .attr("x", function(d,i){ return i*width/nestYear[0].values.length;})
-          .attr("y", function(d){return height/2*(1-d.values.exports/65000000);})
+          .attr("y", function(d){return extra+height/2*(1-d.values.exports/65000000);})
           .attr("width", width/nestYear[0].values.length)
-          .attr("height", function(d){return height/2*(d.values.exports/55000000);})
+          .attr("height", function(d){return height/2*(d.values.exports/65000000);})
           .attr("stroke", "white")
           .attr("class","barchart")
-          .attr("fill","#336699")
+          .attr("fill","#33CC99")
           .on("mouseover", function(d,i){
             var myValue = i=== 0? function(d) { return d.values.y2006;}:
               i === 1? function(d) { return d.values.y2007;}:
@@ -110,7 +125,7 @@
               .transition()
               .duration(300)
               .attr("x", function(d){return d.x;})
-              .attr("y", function(d){return d.y+height/2;})
+              .attr("y", function(d){return 2*extra+d.y+height/2;})
               .attr("width", function(d){return d.dx;})
               .attr("height", function(d){return d.dy;});
             //Update text
@@ -119,20 +134,22 @@
               .transition()
               .duration(300)
               .attr("x", function(d){return d.x+d.dx/2-47;})
-              .attr("y", function(d){return d.y+d.dy/2+5+height/2;})
-            //Update titles
+              .attr("y", function(d){return extra*2+d.y+d.dy/2+5+height/2;})
+            //Update hover titles
             mySvg.selectAll(".hovertexttreemap")
               .data(myTreemap.value(myValue))
-              .text(function(d){return "Category: "+d.key+"\n"+"Expots (USD millions):"+Math.round(d.value/1000);})
+              .text(function(d){return "Category: "+d.key+"\n"+"Expots (USD millions):"+Math.round(d.value/1000)/1000;});
+            //Update treemap title
+            mySvg.select(".treemaptitle").text(function(){return "Exports composition ("+(2006+i)+")"})
           })
-          .append("title").text(function(d){return Math.round(d.values.exports/1000);});
+          .append("title").text(function(d){return Math.round(d.values.exports/1000)/1000;});
         //Create values text for barchart
         mySvg.selectAll("#barcharrvalues") 
           .data(nestYear[0].values)
           .enter()
           .append("text")
           .attr("x", function(d,i){ return (0.25+i)*width/nestYear[0].values.length;})
-          .attr("y", function(d){return height/2*(1-d.values.exports/65000000)-3;})
+          .attr("y", function(d){return extra+height/2*(1-d.values.exports/65000000)-3;})
           .attr("class","bartext")
           .text(function(d){return Math.round(d.values.exports/1000)/1000;});
         //Create years text for barchart
@@ -141,9 +158,9 @@
           .enter()
           .append("text")
           .attr("x", function(d,i){ return (0.3+i)*width/nestYear[0].values.length;})
-          .attr("y", function(d){return height/2-5;})
+          .attr("y", function(d){return extra+20+height/2-5;})
           .attr("class","bartext")
-          .attr("fill", "white")
+          .attr("fill", "black")
           .text(function(d,i){return 2006+i;});
           
 
@@ -170,7 +187,7 @@
           .enter()
           .append("rect")
             .attr("x", function(d){ return d.x;})
-            .attr("y", function(d){return d.y+height/2;})
+            .attr("y", function(d){return extra*2+d.y+height/2;})
             .attr("width", function(d){return d.dx;})
             .attr("height", function(d){return d.dy;})
             .attr("stroke", "white")
@@ -185,7 +202,7 @@
           .enter()
           .append("text")
             .attr("x", function(d){return d.x+d.dx/2-47;})
-            .attr("y", function(d){return d.y+d.dy/2+5+height/2;})
+            .attr("y", function(d){return extra*2+d.y+d.dy/2+5+height/2;})
             .attr("fill", "black")
             .attr("style","font-size:20px")
             .attr("class","treemaptext")
