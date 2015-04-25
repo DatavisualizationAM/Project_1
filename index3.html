@@ -100,8 +100,11 @@
               .append("g")
               .attr("transform","translate("+padding+","+padding+")");
           
-          d3.csv("Libro5.csv", function(data) {
-            
+          d3.csv("Libro5.csv", function(error,data) {
+            if(error){
+              console.log("error");
+            }
+            else{
             console.log(data[8].anio);
             data.forEach(function(d) {
               d.anio = format.parse(String(d.anio));
@@ -131,7 +134,7 @@
                   .attr("class", "y axis")
                   .attr("transform", "translate(30,-50 )")
                   .call(yAxis);
-          });
+         } });
   </script>
   
 <!--  <div class="fb-comments" data-href="http://datavisualizationam.github.io/Project_1/index3.html" data-width="1200" data-numposts="5" data-colorscheme="light" s></div>
