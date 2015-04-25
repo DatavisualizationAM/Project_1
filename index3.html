@@ -113,7 +113,7 @@
                 .enter()
                 .append("path")
                 .attr("class","layer")
-                .attr("d",function(d){return area(data.expo);})
+                .attr("d",function(d){return area(d.values);})
                 .style("fill",function(d,i){return color(i);});
                 
                 svg.append("g")
