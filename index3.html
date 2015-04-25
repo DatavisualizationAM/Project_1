@@ -81,7 +81,7 @@
           
          var stack=d3.layout.stack()
               .offset("zero")
-              .values(function(d){return d.expo;})
+              .values(function(d){return d.values;})
               .x(function(d){return d.year;})
               .y(function(d){return d.expo;});
           
