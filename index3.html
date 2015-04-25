@@ -99,9 +99,9 @@
           d3.csv("ExportsByCategory.csv", function(data) {
             //color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
           console.log(data);
-            data.forEach(function(d) {
-              d.year = parseDate(d.year);
-            });
+            //data.forEach(function(d) {
+            //  d.year = parseDate(d.year);
+            //});
           
             var goods = stack(color.domain().map(function(name) {
               return {
