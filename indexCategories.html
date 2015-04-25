@@ -83,7 +83,7 @@
               .values(function(d){return d.values;})
               .x(function(d){return d.anio;})
               .y(function(d){return d.expo;});
-          
+          console.log(stack.values);
           var nest = d3.nest()
               .key(function(d) { return d.area; });
           
