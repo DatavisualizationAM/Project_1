@@ -104,6 +104,10 @@
             if(error){
             console.log(error);
             console.log(data);
+            }
+            else{
+              console.log(error);
+              console.log(data);
            
             error.forEach(function(d) {
               d.anio = format.parse(String(d.anio));
@@ -132,10 +136,7 @@
                   .attr("class", "y axis")
                   .attr("transform", "translate(30,-50 )")
                   .call(yAxis);
-            }
-            else{
-              console.log(error);
-              console.log(data);
+          
         } });
   </script>
   
