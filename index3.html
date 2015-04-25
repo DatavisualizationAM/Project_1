@@ -62,9 +62,10 @@
             var width=1200;
             var height=400;
             var padding=90;
-          var parseDate = d3.time.format("%y").parse;
+         // var parseDate = d3.time.format("%y").parse;
          
-          var xScale = d3.time.scale()
+          var xScale = d3.scale.linear()
+              .domain([2006,2014])
               .range([0, width]);
           
           var yScale = d3.scale.linear()
@@ -96,7 +97,7 @@
               .attr("transform", "translate(" +padding + "," + padding + ")");
           
           d3.csv("ExportsByCategory.csv", function(data) {
-            color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
+            //color.domain(d3.keys(data[0]).filter(function(key) { return key !== "year"; }));
           console.log(data);
             data.forEach(function(d) {
               d.year = parseDate(d.year);
