@@ -116,7 +116,7 @@
                 .append("path")
                 .attr("class","layer")
                 .attr("d",function(d){return area(d.values);})
-                .attr("transform","translate("+padding+","+(-padding)+")")
+                .attr("transform","translate("+padding+","+(-2*padding)+")")
                 .style("fill",function(d,i){return color(i);});
                 
                 svg.append("g")
