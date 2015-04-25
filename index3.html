@@ -123,7 +123,7 @@
                 .attr("d", function(d) { return area(d.values); })
                 .style("fill", function(d) { return color(d.name); });
           
-            browser.append("text")
+            good.append("text")
                 .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
                 .attr("transform", function(d) { return "translate(" + x(d.value.year) + "," + y(d.value.y0 + d.value.y / 2) + ")"; })
                 .attr("x", -6)
