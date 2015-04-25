@@ -60,7 +60,7 @@
             var width=1000;
             var height=600;
             var padding=50;
-           var parseDate = d3.time.format("%y").parse;
+          // var parseDate = d3.time.format("%y").parse;
          
           var yScale=d3.scale.linear()
                 .range([height, 0]);
@@ -102,7 +102,7 @@
           
           d3.csv("ExportsByCategory.csv", function(data) {
             data.forEach(function(d) {
-              d.year = format.parse(d.year);
+              d.year = format.parse(String(d.year));
               d.expo = +d.expo;
             });
            
