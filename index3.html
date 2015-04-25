@@ -104,7 +104,7 @@
               .key(function(d){return d.area;})
               .entries(data);
           console.log(nest);
-            var layers = stack(nest.entries(data));
+            var layers = stack(nest);
             
                 svg.selectAll(".layer")
                 .data(layers)
