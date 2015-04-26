@@ -306,7 +306,7 @@
                   console.log(d.area);
                   d3.select(this)
                   .classed("hover", true)
-                  tooltip.html( "<p>" + d.area + "<br>" + d.expo + "</p>" ).style("visibility", "visible")
+                  tooltip.html(function(d){return "<p>" + d.area + "<br>" + d.expo + "</p>";} ).style("visibility", "visible")
                   .style("left", (d3.event.pageX) + "px")     
                   .style("top", (d3.event.pageY ) + "px"); 
                 })
