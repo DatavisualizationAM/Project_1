@@ -120,7 +120,7 @@
             
             var layers = stack(nest.entries(data));
             //console.log(d3.extent(function(d){return d.anio;}));
-            xScale.domain(d3.extent(function(d){console.log(d.anio);return d.anio;}));
+            xScale.domain(d3.extent(data, function(d) { console.log(d.anio);return d.anio; }));
             yScale.domain([0,d3.max(function(d){return d.y0+d.y})]);
                 svg.selectAll(".layer")
                 .data(layers)
