@@ -296,12 +296,12 @@
                 .append("path")
                 .attr("class","layer")
                 .attr("d",function(d){console.log(area(d.values));return area(d.values);})
-                .attr("transform",function(d){return"translate(-20,"+(-padding)+")";})
+                .attr("transform",function(d){return"translate(-65,"+(-padding-65)+")";})
                 .style("fill",function(d,i){return color(i);});
                 
                 svg.append("g")
                 .attr("class", "x axis")
-                .attr("transform", "translate(-65,454 )")
+                .attr("transform", "translate(-65,455 )")
                 .call(xAxis);
                 
                 svg.append("g")
