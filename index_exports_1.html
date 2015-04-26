@@ -296,7 +296,7 @@
                 .append("path")
                 .attr("class","layer")
                 .attr("d",function(d){console.log(area(d.values));return area(d.values);})
-                .attr("transform",function(d){return"translate(-65,"+(-padding+65)+")";})
+                .attr("transform",function(d){return"translate(-65,"+(-padding+45)+")";})
                 .style("fill",function(d,i){return color(i);});
                 
                 svg.append("g")
