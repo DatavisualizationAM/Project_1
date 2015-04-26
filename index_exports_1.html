@@ -329,7 +329,9 @@
                 .on("mouseover", function(d, i) {
                   d3.select(this)
                   .classed("hover", true)
-                  tooltip.html( "<p>" + d.area + "<br>" + d.expo + "</p>" ).style("visibility", "visible");
+                  tooltip.html( "<p>" + d.area + "<br>" + d.expo + "</p>" ).style("visibility", "visible")
+                  .style("left", (d3.event.pageX) + "px")     
+                  .style("top", (d3.event.pageY ) + "px"); 
                 })
                // .on("mouseout", function(d, i) {
                 //  d3.select(this)
