@@ -213,6 +213,111 @@
             .text(function(d){return !d.children? null : d.parent? d.key: null;});
       });
     </script>
+  <div id="graph"></div>
+            <script type="text/javascript">
+            var format=d3.time.format("%Y");
+          var width=1000;
+          var height=600;
+          var padding=50;
+          //var parseDate = d3.time.format("%Y").parse;
+         var tooltip = d3.select("body")
+              .append("div")
+              .attr("class", "remove")
+              .style("position", "absolute")
+              .style("z-index", "20")
+              .style("visibility", "hidden")
+              .style("top", "30px")
+              .style("left", "55px");
+              
+          var xScale = d3.time.scale()
+             // .domain([2006,2014])
+              .range([padding, width-padding]);
+          
+          var yScale = d3.scale.linear()
+             // .domain([0,45000000])
+              .range([height-padding, padding]);
+          
+          var color = d3.scale.category20();
+          
+          var xAxis = d3.svg.axis()
+              .scale(xScale)
+              .orient("bottom");
+          
+          var yAxis = d3.svg.axis()
+              .scale(yScale)
+              .orient("left");
+          
+         var stack=d3.layout.stack()
+              .offset("zero")
+              .values(function(d){return d.values;})
+              .x(function(d){return d.anio;})
+              .y(function(d){return d.expo;});
+          
+          var nest = d3.nest()
+              .key(function(d) { return d.area; });
+          
+          var area=d3.svg.area()
+              .interpolate("cardinal")
+              .x(function(d){return xScale(d.anio);})
+              .y0(function(d) { return yScale(d.y0); })
+              .y1(function(d) { return yScale(d.y0 + d.y); });
+              
+          var svg=d3.select("#graph")
+              .append("svg")
+              .attr("width",width)
+              .attr("height",height)
+              .append("g")
+              .attr("transform","translate("+(padding-20)+","+padding+")");
+          
+          d3.csv("ExportsByCategory.csv", function(data) {
+            
+            console.log(nest.entries(data));
+            data.forEach(function(d) {
+              d.anio = format.parse(d.anio.toString());
+              d.expo = +d.expo;
+            }); 
+            
+            var layers = stack(nest.entries(data));
+            //console.log(d3.extent(function(d){return d.anio;}));
+            xScale.domain(d3.extent(data, function(d) { console.log(d.anio);return d.anio; }));
+           yScale.domain([0, d3.max(data, function(d) { console.log(d.y0 + d.y);return d.y0 + d.y; })]);
+                svg.selectAll(".layer")
+                .data(layers)
+                .enter()
+                .append("path")
+                .attr("class","layer")
+                .attr("d",function(d){console.log(area(d.values));return area(d.values);})
+                .attr("transform",function(d){return"translate(-20,"+(-padding)+")";})
+                .style("fill",function(d,i){return color(i);});
+                
+                svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(-20,500 )")
+                .call(xAxis);
+                
+                svg.append("g")
+                .attr("class", "y axis")
+                .attr("transform", "translate(30,-50 )")
+                .call(yAxis);
+                
+                svg.selectAll(".layer")
+                .attr("opacity", 1)
+                .on("mouseover", function(d, i) {
+                  d3.select(this)
+                  .classed("hover", true)
+                  tooltip.html( "<p>" + d.area + "<br>" + d.expo + "</p>" ).style("visibility", "visible");
+                  console.log(d.expo);
+                })
+                .on("mouseout", function(d, i) {
+                  d3.select(this)
+                  .classed("hover", false)
+                  tooltip.html( "<p>" + d.area + "<br>" + d.expo + "</p>" ).style("visibility", "hidden");
+                 console.log(d.expo);
+                })
+
+          });
+  </script>
+
   <!--Google Analytics-->
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
