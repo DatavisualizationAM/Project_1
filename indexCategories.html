@@ -130,7 +130,7 @@
                 .attr("class","layer")
                 .attr("d",function(d){console.log(area(d.values));return area(d.values);})
                 .attr("transform",function(d){return"translate("+(padding-20)+","+(-padding)+")";})
-                .style("fill",function(d,i){return "RGB("+i*50+","+i*100+","+i*200+")";});
+                .style("fill",function(d,i){return color(i);});
                 
                 svg.append("g")
                 .attr("class", "x axis")
