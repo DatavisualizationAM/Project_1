@@ -115,7 +115,7 @@
             xScale.domain(d3.extent(function(d){return d.anio;}));
             //yScale.domain([0,d3.max(function(d){return d.y0+d.y})]);
                 svg.selectAll(".layer")
-                .data(layers)
+                .data([layers])
                 .enter()
                 .append("path")
                 .attr("class","layer")
