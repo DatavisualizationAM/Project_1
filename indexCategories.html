@@ -102,13 +102,13 @@
               .attr("transform","translate("+(padding-20)+","+padding+")");
           
           d3.csv("ExportsByCategory.csv", function(data) {
-           
+            console.log(nest.entries(data).values);
+            console.log(nest.entries(data));
             data.Each(function(d) {
               d.anio = format.parse(d.anio);
               d.expo = +d.expo;
             }); 
-            console.log(nest.entries(data).values);
-            console.log(nest.entries(data));
+            
             var layers = stack(nest.entries(data));
             console.log(layers[1].values);
             xScale.domain(d3.extent(function(d){return d.anio;}));
