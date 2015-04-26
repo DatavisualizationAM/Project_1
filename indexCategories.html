@@ -56,7 +56,7 @@
          
           <div id="graph"></div>
             <script type="text/javascript">
-           // var format=d3.time.format("%y");
+           var format=d3.time.format("%y");
             var width=1000;
             var height=600;
             var padding=50;
@@ -66,8 +66,7 @@
               .domain([2006,2007,2008,2009,2010,2011,2012,2013,2014])
               .rangeRoundBands([padding, width-padding]);
           
-          var yScale = d3.scale.linear()
-              .domain([0,40000000])
+          var yScale = d3.time.scale()
               .range([height-padding, padding]);
           
           var color = d3.scale.category20();
@@ -104,11 +103,15 @@
           
           d3.csv("ExportsByCategory.csv", function(data) {
            
-           console.log(nest.entries(data).values);
-          console.log(nest.entries(data));
+            data.Each(function(d) {
+              d.anio = format.parse(d.anio);
+              d.expo = +d.expo;
+            }); 
+            console.log(nest.entries(data).values);
+            console.log(nest.entries(data));
             var layers = stack(nest.entries(data));
             console.log(layers[1].values);
-            //xScale.domain(d3.extent(function(d){return d.anio;}));
+            xScale.domain(d3.extent(function(d){return d.anio;}));
             //yScale.domain([0,d3.max(function(d){return d.y0+d.y})]);
                 svg.selectAll(".layer")
                 .data(layers)
