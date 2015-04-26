@@ -333,11 +333,13 @@
                   .style("left", (d3.event.pageX) + "px")     
                   .style("top", (d3.event.pageY ) + "px"); 
                 })
-               // .on("mouseout", function(d, i) {
-                //  d3.select(this)
-                //  .classed("hover", false)
-                //  tooltip.html( "<p>" + d.area + "<br>" + d.expo + "</p>" ).style("visibility", "hidden");
-                //})
+                .on("mouseout", function(d, i) {
+                  d3.select(this)
+                  .classed("hover", false)
+                  tooltip.html(function(d){return "<p>" + d.area + "<br>" + d.expo + "</p>" ).style("visibility", "hidden")
+                    .style("left", (d3.event.pageX) + "px")     
+                    .style("top", (d3.event.pageY - 28) + "px");})
+                })
 
           });
   </script>
