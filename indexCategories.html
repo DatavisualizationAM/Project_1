@@ -70,8 +70,8 @@
               .style("top", "30px")
               .style("left", "55px");
               
-          var xScale = d3.time.scale()
-             // .domain([2006,2014])
+          var xScale = d3.scale.linear()
+              .domain([2006,2014])
               .range([padding, width-padding]);
           
           var yScale = d3.scale.linear()
@@ -113,14 +113,14 @@
           d3.csv("ExportsByCategory.csv", function(data) {
             
             //console.log(nest.entries(data));
-            data.forEach(function(d) {
-              d.anio = parseDate(d.anio.toString());
-              d.expo = +d.expo;
-            }); 
+           // data.forEach(function(d) {
+            //  d.anio = parseDate(d.anio.toString());
+            //  d.expo = +d.expo;
+            //}); 
             
             var layers = stack(nest.entries(data));
             //console.log(d3.extent(function(d){return d.anio;}));
-            xScale.domain(d3.extent(function(d){return d.anio;}));
+            //xScale.domain(d3.extent(function(d){return d.anio;}));
             //yScale.domain([0,d3.max(function(d){return d.y0+d.y})]);
                 svg.selectAll(".layer")
                 .data(layers)
