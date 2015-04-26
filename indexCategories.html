@@ -105,7 +105,7 @@
             console.log(nest.entries(data).values);
             console.log(nest.entries(data));
             data.forEach(function(d) {
-              d.anio = format.parse(d.anio);
+              d.anio = format.parse(String(d.anio));
               d.expo = +d.expo;
             }); 
             
