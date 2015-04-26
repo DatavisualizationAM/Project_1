@@ -102,7 +102,7 @@
               .attr("transform","translate("+(padding-20)+","+padding+")");
           
           d3.csv("ExportsByCategory.csv", function(data) {
-            console.log(nest.entries(data).values);
+            console.log(nest.entries(data)[1].anio);
             console.log(nest.entries(data));
             data.forEach(function(d) {
               d.anio = format.parse(String(d.anio));
