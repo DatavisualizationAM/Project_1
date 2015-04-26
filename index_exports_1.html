@@ -57,9 +57,10 @@
             <p> The next treemap shows total exports in millions of dollars for each category. The orange category stands for fuels, the green one for manufactured goods, the blue one for agricultural goods and the red one for others. Each category is divided into subcategories which give a more detailed description on the those exports. 
             </p>
           </div>
+           <div id="graph" style="margin-left:40px;margin-right:40px; text-align:justify;"></div>
         </div>
       </div>
-       <div id="graph"></div>
+      
       <!--Comments-->
       <div  id="participants">
         <div class="fb-comments" data-href="http://datavisualizationam.github.io/Project_1/index3.html" data-numposts="5" data-colorscheme="light" s></div>
@@ -228,8 +229,7 @@
           var width=1000;
           var height=600;
           var padding=50;
-          //var parseDate = d3.time.format("%Y").parse;
-         var tooltip = d3.select("body")
+          var tooltip = d3.select("body")
               .append("div")
               .attr("class", "remove")
               .style("position", "absolute")
@@ -287,9 +287,9 @@
             }); 
             
             var layers = stack(nest.entries(data));
-            //console.log(d3.extent(function(d){return d.anio;}));
+            
             xScale.domain(d3.extent(data, function(d) { console.log(d.anio);return d.anio; }));
-           yScale.domain([0, d3.max(data, function(d) { console.log(d.y0 + d.y);return d.y0 + d.y; })]);
+            yScale.domain([0, d3.max(data, function(d) { console.log(d.y0 + d.y);return d.y0 + d.y; })]);
                 svg.selectAll(".layer")
                 .data(layers)
                 .enter()
