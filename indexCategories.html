@@ -121,7 +121,7 @@
                 .attr("class","layer")
                 .attr("d",function(d){return area(d.values);})
                 .attr("transform",function(d){return"translate("+(padding-20)+","+(-padding)+")";})
-                .style("fill",function(d,i){return "RGB("+i*100+",100,100)";});
+                .style("fill","black");//function(d,i){return "RGB("+i*100+",100,100)";});
                 
                 svg.append("g")
                 .attr("class", "x axis")
