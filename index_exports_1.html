@@ -314,14 +314,15 @@
                 .call(yAxis);
                 
                 svg.append("text")
-                .attr("x",-550)
-                .attr("y",-50)
+                .attr("x",0)
+                .attr("y",0)
                 .text("Year");
                 
                 svg.append("text")
-                .attr("x",-100)
-                .attr("y",-100).
-                text("Exports (Million US$");
+                .attr("x",0)
+                .attr("y",0)
+                .text("Exports (Million US$")
+                .attr("transform","rotate(90)");
                 
                 svg.selectAll(".layer")
                 .attr("opacity", 1)
