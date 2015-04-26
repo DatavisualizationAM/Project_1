@@ -128,7 +128,7 @@
                 .enter()
                 .append("path")
                 .attr("class","layer")
-                .attr("d",function(d){return area(d.values);})
+                .attr("d",function(d){console.log(area(d.values);return area(d.values);})
                 //.attr("transform",function(d){return"translate("+(padding-20)+","+(-padding)+")";})
                 .style("fill",function(d,i){return "RGB("+i*50+","+i*100+","+i*200+")";});
                 
@@ -141,6 +141,7 @@
                 .attr("class", "y axis")
                 .attr("transform", "translate(30,-50 )")
                 .call(yAxis);
+                
                 svg.selectAll(".layer")
                 .attr("opacity", 1)
                 .on("mouseover", function(d, i) {
