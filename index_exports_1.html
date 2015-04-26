@@ -299,7 +299,7 @@
                 .enter()
                 .append("path")
                 .attr("class","layer")
-                .attr("d",function(d){console.log(d.expo);return area(d.values);})
+                .attr("d",function(d){console.log(d.y);return area(d.values);})
                 .attr("transform",function(d){return"translate(-65,"+(-padding+45)+")";})
                 .style("fill",function(d,i){return color(i);})
                 .on("mouseover", function(d, i) {
