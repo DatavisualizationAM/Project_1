@@ -313,6 +313,16 @@
                 .attr("transform", "translate(30,-50 )")
                 .call(yAxis);
                 
+                svg.append("text")
+                .attr("x",-550)
+                .attr("y",-50)
+                .text("Year");
+                
+                svg.append("text")
+                .attr("x",-100)
+                .attr("y",-100).
+                text("Exports (Million US$");
+                
                 svg.selectAll(".layer")
                 .attr("opacity", 1)
                 .on("mouseover", function(d, i) {
