@@ -301,7 +301,21 @@
                 .attr("class","layer")
                 .attr("d",function(d){console.log(area(d.values));return area(d.values);})
                 .attr("transform",function(d){return"translate(-65,"+(-padding+45)+")";})
-                .style("fill",function(d,i){return color(i);});
+                .style("fill",function(d,i){return color(i);})
+                .on("mouseover", function(d, i) {
+                  d3.select(this)
+                  .classed("hover", true)
+                  tooltip.html( "<p>" + d.area + "<br>" + d.expo + "</p>" ).style("visibility", "visible")
+                  .style("left", (d3.event.pageX) + "px")     
+                  .style("top", (d3.event.pageY ) + "px"); 
+                })
+                .on("mouseout", function(d, i) {
+                  d3.select(this)
+                  .classed("hover", false)
+                  tooltip.html(function(d){return "<p>" + d.area + "<br>" + d.expo + "</p>" ).style("visibility", "hidden")
+                    .style("left", (d3.event.pageX) + "px")     
+                    .style("top", (d3.event.pageY - 28) + "px");})
+                });
                 
                 svg.append("g")
                 .attr("class", "x axis")
@@ -323,24 +337,6 @@
                 .attr("y",-55)
                 .text("Exports (Million US$)")
                 .attr("transform","rotate(-90)");
-                
-                svg.selectAll(".layer")
-                .attr("opacity", 1)
-                .on("mouseover", function(d, i) {
-                  d3.select(this)
-                  .classed("hover", true)
-                  tooltip.html( "<p>" + d.area + "<br>" + d.expo + "</p>" ).style("visibility", "visible")
-                  .style("left", (d3.event.pageX) + "px")     
-                  .style("top", (d3.event.pageY ) + "px"); 
-                })
-                .on("mouseout", function(d, i) {
-                  d3.select(this)
-                  .classed("hover", false)
-                  tooltip.html(function(d){return "<p>" + d.area + "<br>" + d.expo + "</p>" ).style("visibility", "hidden")
-                    .style("left", (d3.event.pageX) + "px")     
-                    .style("top", (d3.event.pageY - 28) + "px");})
-                })
-
           });
   </script>
 
