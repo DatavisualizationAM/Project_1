@@ -57,11 +57,19 @@
           <div id="graph"></div>
             <script type="text/javascript">
             //var format=d3.time.format("%y");
-            var width=1000;
-            var height=600;
-            var padding=50;
-            var parseDate = d3.time.format("%Y").parse;
-         
+          var width=1000;
+          var height=600;
+          var padding=50;
+          var parseDate = d3.time.format("%Y").parse;
+         var tooltip = d3.select("body")
+              .append("div")
+              .attr("class", "remove")
+              .style("position", "absolute")
+              .style("z-index", "20")
+              .style("visibility", "hidden")
+              .style("top", "30px")
+              .style("left", "55px");
+              
           var xScale = d3.time.scale()
               .domain([2006,2014])
               .range([padding, width-padding]);
@@ -74,7 +82,8 @@
           
           var xAxis = d3.svg.axis()
               .scale(xScale)
-              .orient("bottom");
+              .orient("bottom")
+              .ticks(d3.time.years);
           
           var yAxis = d3.svg.axis()
               .scale(yScale)
@@ -128,10 +137,23 @@
                 .attr("transform", "translate(-20,500 )")
                 .call(xAxis);
                 
-                  svg.append("g")
-                  .attr("class", "y axis")
-                  .attr("transform", "translate(30,-50 )")
-                  .call(yAxis);
+                svg.append("g")
+                .attr("class", "y axis")
+                .attr("transform", "translate(30,-50 )")
+                .call(yAxis);
+                svg.selectAll(".layer")
+                .attr("opacity", 1)
+                .on("mouseover", function(d, i) {
+                  d3.select(this)
+                  .classed("hover", true)
+                  tooltip.html( "<p>" + d.key + "<br>" + d.value + "</p>" ).style("visibility", "visible");
+                })
+                .on("mouseout",function(d){
+                  d3.select(this)
+                  .classed("hover",false)
+                  .tooltip.html( "<p>" + d.area + "<br>" + d.anio + "</p>" ).style("visibility","hidden");
+                })
+
           });
   </script>
   
