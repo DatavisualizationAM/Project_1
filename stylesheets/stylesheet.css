@@ -38,7 +38,7 @@ font-weight:bold;
 	top: 2000px;
 	margin-left:250px;
 }
-#participants,#disqus_thread{
+#participants,#disqus_thread,#graph{
 	margin: 10px;
 	text-align:center;
 	background-color: #F8F8F8 ;
