@@ -111,7 +111,7 @@
             }); 
             
             var layers = stack(nest.entries(data));
-            console.log(d3.extent(function(d){return d.anio;}));
+            //console.log(d3.extent(function(d){return d.anio;}));
             //xScale.domain(d3.extent(function(d){return d.anio;}));
             //yScale.domain([0,d3.max(function(d){return d.y0+d.y})]);
                 svg.selectAll(".layer")
@@ -119,7 +119,7 @@
                 .enter()
                 .append("path")
                 .attr("class","layer")
-                .attr("d",function(d){console.log(d.values);console.log(area(d.values));return area(d.values);})
+                .attr("d",function(d){console.log(area(d.values));return area(d.values);})
                 .attr("transform",function(d){return"translate("+(padding-20)+","+(-padding)+")";})
                 .style("fill",function(d,i){return "RGB("+i*100+",100,100)";});
                 
