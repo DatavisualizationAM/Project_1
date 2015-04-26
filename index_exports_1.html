@@ -291,7 +291,7 @@
             }); 
             
             var layers = stack(nest.entries(data));
-            
+            console.log(layers);
             xScale.domain(d3.extent(data, function(d) {return d.anio; }));
             yScale.domain([0, d3.max(data, function(d) {return d.y0 + d.y; })]);
                 svg.selectAll(".layer")
