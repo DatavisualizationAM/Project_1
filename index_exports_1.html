@@ -284,7 +284,7 @@
           
           d3.csv("ExportsByCategory.csv", function(data) {
             
-            console.log(nest.entries(data));
+          
             data.forEach(function(d) {
               d.anio = format.parse(d.anio.toString());
               d.expo = +d.expo;
@@ -292,14 +292,14 @@
             
             var layers = stack(nest.entries(data));
             
-            xScale.domain(d3.extent(data, function(d) { console.log(d.anio);return d.anio; }));
-            yScale.domain([0, d3.max(data, function(d) { console.log(d.y0 + d.y);return d.y0 + d.y; })]);
+            xScale.domain(d3.extent(data, function(d) {return d.anio; }));
+            yScale.domain([0, d3.max(data, function(d) {return d.y0 + d.y; })]);
                 svg.selectAll(".layer")
                 .data(layers)
                 .enter()
                 .append("path")
                 .attr("class","layer")
-                .attr("d",function(d){console.log(area(d.values));return area(d.values);})
+                .attr("d",function(d){console.log(d.expo));return area(d.values);})
                 .attr("transform",function(d){return"translate(-65,"+(-padding+45)+")";})
                 .style("fill",function(d,i){return color(i);})
                 .on("mouseover", function(d, i) {
