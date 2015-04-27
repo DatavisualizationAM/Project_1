@@ -59,7 +59,7 @@
           </div>
         </div>
       </div>
-      <div id="graph" style="margin-left:35px;margin-right:40px; text-align:justify;">
+      <div id="graph" >
         <p style="margin-left:40px;margin-right:40px; text-align:justify;">The Following Stacked area chart shows the behaviour of Colombian exports between the years of 2006 and 2014. From the graph it is clear that all exports have remain constant except for fuels, which have increased signinficantly.</p>
       </div>
       
@@ -73,33 +73,33 @@
 
   <!--Treemap-->
     <script>
-      mywidth=650;
-      myheight=700;
-      extra=0.1*myheight;
-      var mycolor = d3.scale.category20c();
+      width=650;
+      height=700;
+      extra=0.1*height;
+      var color = d3.scale.category20c();
 
       //Create svg
       var mySvg= d3.select("#participants").append("svg")
-            .attr("width", mywidth)
-            .attr("height", myheight+2*extra);
+            .attr("width", width)
+            .attr("height", height+2*extra);
 
       //Add titles to the svg
       mySvg.append("text")
-        .attr("x",mywidth/2)
+        .attr("x",width/2)
         .attr("y",extra)
         .attr("text-anchor","middle")
         .attr("class","svgtitle")
         .text("Colombian exports by year (USD Millions)")
 
       mySvg.append("text")
-        .attr("x",mywidth/2)
-        .attr("y",extra*1.8+myheight/2)
+        .attr("x",width/2)
+        .attr("y",extra*1.8+height/2)
         .attr("text-anchor","middle")
         .attr("class","svgtitle treemaptitle")
         .text("Exports composition (2006)")
       //Create treemap layout
       var myTreemap= d3.layout.treemap()
-        .size([mywidth,(myheight-20)/2])
+        .size([width,(height-20)/2])
         .sticky(true)
         .padding(0)
         .value(function(d) {return +d.values.y2006; })    
@@ -120,10 +120,10 @@
           .data(nestYear[0].values)
           .enter()
           .append("rect")
-          .attr("x", function(d,i){ return i*mywidth/nestYear[0].values.length;})
-          .attr("y", function(d){return extra+myheight/2*(1-d.values.exports/65000000);})
-          .attr("width", mywidth/nestYear[0].values.length)
-          .attr("height", function(d){return myheight/2*(d.values.exports/65000000);})
+          .attr("x", function(d,i){ return i*width/nestYear[0].values.length;})
+          .attr("y", function(d){return extra+height/2*(1-d.values.exports/65000000);})
+          .attr("width", width/nestYear[0].values.length)
+          .attr("height", function(d){return height/2*(d.values.exports/65000000);})
           .attr("stroke", "white")
           .attr("class","barchart")
           .attr("fill","#33CC99")
@@ -143,7 +143,7 @@
               .transition()
               .duration(300)
               .attr("x", function(d){return d.x;})
-              .attr("y", function(d){return 2*extra+d.y+myheight/2;})
+              .attr("y", function(d){return 2*extra+d.y+height/2;})
               .attr("width", function(d){return d.dx;})
               .attr("height", function(d){return d.dy;});
             //Update text
@@ -152,7 +152,7 @@
               .transition()
               .duration(300)
               .attr("x", function(d){return d.x+d.dx/2-47;})
-              .attr("y", function(d){return extra*2+d.y+d.dy/2+5+myheight/2;})
+              .attr("y", function(d){return extra*2+d.y+d.dy/2+5+height/2;})
             //Update hover titles
             mySvg.selectAll(".hovertexttreemap")
               .data(myTreemap.value(myValue))
@@ -166,8 +166,8 @@
           .data(nestYear[0].values)
           .enter()
           .append("text")
-          .attr("x", function(d,i){ return (0.25+i)*mywidth/nestYear[0].values.length;})
-          .attr("y", function(d){return extra+myheight/2*(1-d.values.exports/65000000)-3;})
+          .attr("x", function(d,i){ return (0.25+i)*width/nestYear[0].values.length;})
+          .attr("y", function(d){return extra+height/2*(1-d.values.exports/65000000)-3;})
           .attr("class","bartext")
           .text(function(d){return Math.round(d.values.exports/1000)/1000;});
         //Create years text for barchart
@@ -175,8 +175,8 @@
           .data(nestYear[0].values)
           .enter()
           .append("text")
-          .attr("x", function(d,i){ return (0.3+i)*mywidth/nestYear[0].values.length;})
-          .attr("y", function(d){return extra+20+myheight/2-5;})
+          .attr("x", function(d,i){ return (0.3+i)*width/nestYear[0].values.length;})
+          .attr("y", function(d){return extra+20+height/2-5;})
           .attr("class","bartext")
           .attr("fill", "black")
           .text(function(d,i){return 2006+i;});
@@ -205,12 +205,12 @@
           .enter()
           .append("rect")
             .attr("x", function(d){ return d.x;})
-            .attr("y", function(d){return extra*2+d.y+myheight/2;})
+            .attr("y", function(d){return extra*2+d.y+height/2;})
             .attr("width", function(d){return d.dx;})
             .attr("height", function(d){return d.dy;})
             .attr("stroke", "white")
             .attr("class","treemaprect")
-            .attr("fill", function(d){return d.children? "white": mycolor(d.parent.value);})
+            .attr("fill", function(d){return d.children? "white": color(d.parent.value);})
             .append("title").text(function(d){return "Category: "+d.key+"\n"+"Expots (USD millions):"+Math.round(d.value/1000);})
             .attr("class","hovertexttreemap");
 
@@ -220,7 +220,7 @@
           .enter()
           .append("text")
             .attr("x", function(d){return d.x+d.dx/2-47;})
-            .attr("y", function(d){return extra*2+d.y+d.dy/2+5+myheight/2;})
+            .attr("y", function(d){return extra*2+d.y+d.dy/2+5+height/2;})
             .attr("fill", "black")
             .attr("style","font-size:20px")
             .attr("class","treemaptext")
@@ -228,140 +228,7 @@
       });
     </script>
  
-    <script type="text/javascript">
-          var format=d3.time.format("%Y");
-          var width=800;
-          var height=600;
-          var padding=95;
-          var tooltip = d3.select("body")
-              .append("div")
-              .attr("class", "remove")
-              .style("position", "absolute")
-              .style("z-index", "20")
-              .style("visibility", "hidden")
-              .style("top", "30px")
-              .style("left", "55px");
-              
-          var xScale = d3.time.scale()
-             // .domain([2006,2014])
-              .range([padding, width-padding]);
-          
-          var yScale = d3.scale.linear()
-             // .domain([0,45000000])
-              .range([height-padding, padding]);
-          
-          var color = d3.scale.category20();
-          
-          var xAxis = d3.svg.axis()
-              .scale(xScale)
-              .orient("bottom");
-          
-          var yAxis = d3.svg.axis()
-              .scale(yScale)
-              .orient("left");
-          
-         var stack=d3.layout.stack()
-              .offset("zero")
-              .values(function(d){return d.values;})
-              .x(function(d){return d.anio;})
-              .y(function(d){return d.expo;});
-          
-          var nest = d3.nest()
-              .key(function(d) { return d.area; });
-          
-          var area=d3.svg.area()
-              .interpolate("cardinal")
-              .x(function(d){return xScale(d.anio);})
-              .y0(function(d) { return yScale(d.y0); })
-              .y1(function(d) { return yScale(d.y0 + d.y); });
-              
-          var svg=d3.select("#graph")
-              .append("svg")
-              .attr("width",width)
-              .attr("height",height)
-              .append("g")
-              .attr("transform","translate("+(padding-20)+","+padding+")");
-          
-          d3.csv("ExportsByCategory.csv", function(data) {
-            
-          
-            data.forEach(function(d) {
-              d.anio = format.parse(d.anio.toString());
-              d.expo = +d.expo;
-            }); 
-            
-            var layers = stack(nest.entries(data));
-            console.log(layers);
-            xScale.domain(d3.extent(data, function(d) {return d.anio; }));
-            yScale.domain([0, d3.max(data, function(d) {return d.y0 + d.y; })]);
-                svg.selectAll(".layer")
-                .data(layers)
-                .enter()
-                .append("path")
-                .attr("class","layer")
-                .attr("d",function(d){console.log(d.y);return area(d.values);})
-                .attr("transform",function(d){return"translate(-65,"+(-padding+45)+")";})
-                .style("fill",function(d,i){return color(i);})
-                .on("mouseover", function(d, i) {
-                  console.log(d.area);
-                  d3.select(this)
-                  .classed("hover", true)
-                  tooltip.html(function(d){return "<p>" + d.area + "<br>" + d.expo + "</p>";} ).style("visibility", "visible")
-                  .style("left", (d3.event.pageX) + "px")     
-                  .style("top", (d3.event.pageY ) + "px"); 
-                })
-                .on("mouseout", function(d, i) {
-                  d3.select(this)
-                  .classed("hover", false)
-                  tooltip.html("<p>" + d.area + "<br>" + layers.expo + "</p>" )
-                    .style("visibility", "hidden")
-                    .style("left", (d3.event.pageX) + "px")     
-                    .style("top", (d3.event.pageY - 28) + "px")
-                    })
-                    .on("mousemove", function(d){
-                      return tooltip
-                      .style("top", (event.pageY-10)+"px")
-                      .style("left",(event.pageX+10)+"px");});
-                
-                svg.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(-65,455 )")
-                .call(xAxis);
-                
-                svg.append("g")
-                .attr("class", "y axis")
-                .attr("transform", "translate(30,-50 )")
-                .call(yAxis);
-                
-                svg.append("text")
-                .attr("x",300)
-                .attr("y",500)
-                .text("Year");
-                
-                svg.append("text")
-                .attr("x",-200)
-                .attr("y",-55)
-                .text("Exports (Million US$)")
-                .attr("transform","rotate(-90)");
-                
-                svg.append("text")
-                .attr("x",550)
-                .attr("y",300)
-                .text("Fuels");
-                 svg.append("text")
-                .attr("x",550)
-                .attr("y",337)
-                .text("Others");
-                 svg.append("text")
-                .attr("x",550)
-                .attr("y",380)
-                .text("Manufacture");
-                 svg.append("text")
-                .attr("x",550)
-                .attr("y",450)
-                .text("Agriculture");
-          });
-  </script>
+   
 
   <!--Google Analytics-->
   <script>
